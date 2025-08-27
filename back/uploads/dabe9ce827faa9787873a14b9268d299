@@ -1,0 +1,301 @@
+Patient_ID,Name,Gender,Age,Department,Disease,Admit_Date,Discharge_Date,Outcome,Insurance,Cost
+P001,Patient 1,F,32,Cardiology,Heart Attack,2025-01-08,2025-01-11,Recovered,Yes,12674
+P002,Patient 2,M,12,Pulmonology,Asthma,2025-01-07,2025-01-11,Recovered,Yes,12195
+P003,Patient 3,M,58,Neurology,Epilepsy,2025-01-19,2025-01-24,Recovered,Yes,5615
+P004,Patient 4,F,20,Pulmonology,Pneumonia,2025-01-07,2025-01-13,Recovered,No,4584
+P005,Patient 5,F,6,Orthopedics,Arthritis,2025-01-24,2025-02-01,Recovered,No,4291
+P006,Patient 6,F,74,Oncology,Breast Cancer,2025-01-07,2025-01-09,Recovered,Yes,7741
+P007,Patient 7,M,49,Cardiology,Heart Attack,2025-01-09,2025-01-17,Recovered,No,5664
+P008,Patient 8,M,86,Orthopedics,Arthritis,2025-01-09,2025-01-11,Recovered,Yes,11751
+P009,Patient 9,F,49,Neurology,Stroke,2025-01-09,2025-01-18,Recovered,No,3916
+P010,Patient 10,F,52,Neurology,Stroke,2025-01-09,2025-01-11,Recovered,No,6483
+P011,Patient 11,F,19,Pulmonology,Pneumonia,2025-01-09,2025-01-12,Recovered,No,12577
+P012,Patient 12,F,29,Pulmonology,Pneumonia,2025-01-05,2025-01-14,Recovered,Yes,4796
+P013,Patient 13,F,77,Neurology,Stroke,2025-01-03,2025-01-10,Recovered,No,11669
+P014,Patient 14,M,88,Orthopedics,Fracture,2025-01-29,2025-02-07,Recovered,No,4827
+P015,Patient 15,M,59,Orthopedics,Arthritis,2025-01-01,2025-01-06,Deceased,Yes,11317
+P016,Patient 16,M,20,Cardiology,Arrhythmia,2025-01-12,2025-01-15,Recovered,Yes,12813
+P017,Patient 17,M,15,Orthopedics,Arthritis,2025-01-30,2025-02-05,Recovered,No,6923
+P018,Patient 18,M,11,Cardiology,Heart Attack,2025-01-24,2025-02-01,Recovered,Yes,5103
+P019,Patient 19,F,68,Pulmonology,Asthma,2025-01-28,2025-02-07,Recovered,Yes,11835
+P020,Patient 20,F,86,Neurology,Epilepsy,2025-01-21,2025-01-27,Recovered,No,4982
+P021,Patient 21,M,44,Neurology,Stroke,2025-01-01,2025-01-11,Recovered,Yes,3117
+P022,Patient 22,M,9,Cardiology,Heart Attack,2025-01-29,2025-01-30,Recovered,Yes,11423
+P023,Patient 23,F,28,Neurology,Epilepsy,2025-01-18,2025-01-21,Recovered,No,6981
+P024,Patient 24,M,13,Pulmonology,Pneumonia,2025-01-04,2025-01-11,Recovered,No,10651
+P025,Patient 25,M,52,Cardiology,Heart Attack,2025-01-24,2025-01-30,Recovered,Yes,7073
+P026,Patient 26,F,18,Neurology,Stroke,2025-01-14,2025-01-17,Recovered,Yes,4235
+P027,Patient 27,M,84,Pulmonology,Asthma,2025-01-18,2025-01-19,Deceased,Yes,5724
+P028,Patient 28,F,28,Pulmonology,Pneumonia,2025-01-28,2025-02-04,Deceased,Yes,9209
+P029,Patient 29,F,59,Cardiology,Arrhythmia,2025-01-10,2025-01-17,Recovered,No,5536
+P030,Patient 30,M,8,Neurology,Epilepsy,2025-01-19,2025-01-28,Recovered,No,3936
+P031,Patient 31,M,8,Cardiology,Arrhythmia,2025-01-31,2025-02-09,Recovered,Yes,4122
+P032,Patient 32,M,52,Oncology,Lung Cancer,2025-01-04,2025-01-14,Recovered,Yes,13147
+P033,Patient 33,F,34,Cardiology,Arrhythmia,2025-01-07,2025-01-13,Recovered,No,5144
+P034,Patient 34,F,10,Orthopedics,Arthritis,2025-01-01,2025-01-09,Recovered,Yes,4200
+P035,Patient 35,F,17,Oncology,Lung Cancer,2025-01-30,2025-02-05,Recovered,Yes,9054
+P036,Patient 36,F,70,Orthopedics,Fracture,2025-01-23,2025-01-28,Recovered,Yes,13942
+P037,Patient 37,M,18,Oncology,Breast Cancer,2025-01-09,2025-01-11,Recovered,Yes,7462
+P038,Patient 38,F,27,Orthopedics,Fracture,2025-01-22,2025-01-27,Recovered,No,3832
+P039,Patient 39,F,6,Cardiology,Arrhythmia,2025-01-01,2025-01-07,Recovered,No,5647
+P040,Patient 40,M,15,Pulmonology,Pneumonia,2025-01-03,2025-01-06,Recovered,No,12543
+P041,Patient 41,F,17,Oncology,Lung Cancer,2025-01-02,2025-01-07,Recovered,Yes,8862
+P042,Patient 42,M,46,Neurology,Stroke,2025-01-25,2025-02-03,Recovered,No,13168
+P043,Patient 43,M,23,Neurology,Stroke,2025-01-29,2025-02-05,Recovered,No,9745
+P044,Patient 44,M,90,Neurology,Epilepsy,2025-01-04,2025-01-11,Recovered,No,6644
+P045,Patient 45,F,40,Neurology,Epilepsy,2025-01-27,2025-01-31,Recovered,Yes,9528
+P046,Patient 46,M,36,Orthopedics,Arthritis,2025-01-12,2025-01-21,Recovered,No,3452
+P047,Patient 47,M,75,Cardiology,Arrhythmia,2025-01-31,2025-02-05,Recovered,No,8663
+P048,Patient 48,M,50,Orthopedics,Arthritis,2025-01-29,2025-02-08,Recovered,Yes,14612
+P049,Patient 49,M,47,Pulmonology,Asthma,2025-01-14,2025-01-16,Deceased,No,13209
+P050,Patient 50,F,65,Orthopedics,Fracture,2025-01-10,2025-01-17,Recovered,No,12083
+P051,Patient 51,F,86,Neurology,Stroke,2025-01-31,2025-02-07,Recovered,Yes,13084
+P052,Patient 52,F,71,Oncology,Breast Cancer,2025-01-27,2025-01-28,Recovered,Yes,10043
+P053,Patient 53,F,57,Oncology,Breast Cancer,2025-01-15,2025-01-19,Recovered,Yes,13794
+P054,Patient 54,F,12,Cardiology,Arrhythmia,2025-01-27,2025-01-31,Recovered,Yes,6262
+P055,Patient 55,M,32,Neurology,Stroke,2025-01-16,2025-01-26,Recovered,Yes,10461
+P056,Patient 56,F,64,Pulmonology,Asthma,2025-01-13,2025-01-17,Recovered,Yes,4746
+P057,Patient 57,M,90,Pulmonology,Asthma,2025-01-17,2025-01-25,Recovered,Yes,4988
+P058,Patient 58,F,86,Pulmonology,Asthma,2025-01-17,2025-01-26,Recovered,No,13037
+P059,Patient 59,F,21,Oncology,Breast Cancer,2025-01-24,2025-02-01,Recovered,Yes,13447
+P060,Patient 60,M,36,Orthopedics,Arthritis,2025-01-15,2025-01-17,Recovered,Yes,7451
+P061,Patient 61,M,18,Orthopedics,Arthritis,2025-01-05,2025-01-09,Recovered,Yes,14573
+P062,Patient 62,F,53,Neurology,Stroke,2025-01-11,2025-01-20,Recovered,Yes,6388
+P063,Patient 63,M,74,Pulmonology,Pneumonia,2025-01-13,2025-01-21,Recovered,No,7892
+P064,Patient 64,M,63,Pulmonology,Pneumonia,2025-01-08,2025-01-13,Recovered,Yes,9371
+P065,Patient 65,M,60,Orthopedics,Arthritis,2025-01-30,2025-02-02,Deceased,Yes,9455
+P066,Patient 66,M,83,Oncology,Lung Cancer,2025-01-14,2025-01-17,Recovered,Yes,3823
+P067,Patient 67,F,28,Orthopedics,Arthritis,2025-01-15,2025-01-21,Recovered,No,7558
+P068,Patient 68,M,61,Pulmonology,Pneumonia,2025-01-01,2025-01-10,Recovered,No,6673
+P069,Patient 69,M,32,Cardiology,Heart Attack,2025-01-07,2025-01-08,Recovered,Yes,5068
+P070,Patient 70,M,60,Pulmonology,Asthma,2025-01-23,2025-01-28,Recovered,Yes,12926
+P071,Patient 71,M,40,Oncology,Lung Cancer,2025-01-04,2025-01-14,Recovered,No,12433
+P072,Patient 72,M,10,Pulmonology,Pneumonia,2025-01-19,2025-01-23,Recovered,No,14210
+P073,Patient 73,M,45,Oncology,Lung Cancer,2025-01-18,2025-01-25,Recovered,Yes,11289
+P074,Patient 74,F,63,Orthopedics,Fracture,2025-01-04,2025-01-11,Deceased,No,14588
+P075,Patient 75,M,67,Neurology,Epilepsy,2025-01-31,2025-02-05,Recovered,No,10616
+P076,Patient 76,F,32,Pulmonology,Pneumonia,2025-01-27,2025-01-29,Recovered,No,6995
+P077,Patient 77,F,4,Pulmonology,Pneumonia,2025-01-16,2025-01-22,Recovered,Yes,8813
+P078,Patient 78,F,77,Orthopedics,Arthritis,2025-01-23,2025-01-28,Recovered,Yes,4402
+P079,Patient 79,F,72,Neurology,Epilepsy,2025-01-25,2025-01-29,Recovered,No,10342
+P080,Patient 80,F,29,Cardiology,Heart Attack,2025-01-13,2025-01-17,Recovered,No,10753
+P081,Patient 81,F,71,Oncology,Breast Cancer,2025-01-11,2025-01-17,Recovered,No,8023
+P082,Patient 82,M,25,Orthopedics,Fracture,2025-01-11,2025-01-13,Recovered,Yes,6138
+P083,Patient 83,F,76,Neurology,Epilepsy,2025-01-25,2025-02-03,Recovered,Yes,6180
+P084,Patient 84,F,23,Orthopedics,Fracture,2025-01-10,2025-01-11,Recovered,Yes,7494
+P085,Patient 85,F,90,Cardiology,Heart Attack,2025-01-31,2025-02-03,Recovered,No,4680
+P086,Patient 86,F,62,Cardiology,Arrhythmia,2025-01-15,2025-01-21,Recovered,Yes,7136
+P087,Patient 87,M,52,Pulmonology,Asthma,2025-01-16,2025-01-18,Recovered,Yes,5485
+P088,Patient 88,M,32,Neurology,Epilepsy,2025-01-04,2025-01-13,Recovered,Yes,11561
+P089,Patient 89,F,39,Pulmonology,Pneumonia,2025-01-28,2025-02-07,Deceased,No,12316
+P090,Patient 90,M,27,Oncology,Lung Cancer,2025-01-21,2025-01-25,Recovered,Yes,5573
+P091,Patient 91,M,21,Neurology,Stroke,2025-01-01,2025-01-08,Recovered,No,7771
+P092,Patient 92,F,37,Cardiology,Heart Attack,2025-01-23,2025-01-31,Recovered,Yes,7334
+P093,Patient 93,F,15,Oncology,Lung Cancer,2025-01-18,2025-01-22,Recovered,No,5330
+P094,Patient 94,M,40,Cardiology,Heart Attack,2025-01-20,2025-01-30,Deceased,No,5037
+P095,Patient 95,F,35,Pulmonology,Pneumonia,2025-01-17,2025-01-26,Recovered,Yes,12798
+P096,Patient 96,F,78,Cardiology,Arrhythmia,2025-01-09,2025-01-10,Recovered,Yes,14014
+P097,Patient 97,M,61,Orthopedics,Fracture,2025-01-17,2025-01-25,Deceased,Yes,12590
+P098,Patient 98,M,61,Pulmonology,Pneumonia,2025-01-12,2025-01-19,Recovered,Yes,5634
+P099,Patient 99,F,37,Orthopedics,Arthritis,2025-01-22,2025-01-29,Recovered,Yes,10451
+P100,Patient 100,F,42,Cardiology,Arrhythmia,2025-01-04,2025-01-11,Recovered,Yes,13775
+P101,Patient 101,F,7,Oncology,Breast Cancer,2025-01-07,2025-01-16,Recovered,No,13246
+P102,Patient 102,M,35,Pulmonology,Asthma,2025-01-18,2025-01-21,Deceased,No,14440
+P103,Patient 103,M,81,Pulmonology,Asthma,2025-01-20,2025-01-24,Recovered,No,12024
+P104,Patient 104,M,29,Cardiology,Arrhythmia,2025-01-27,2025-01-29,Recovered,Yes,13612
+P105,Patient 105,F,66,Neurology,Epilepsy,2025-01-23,2025-01-28,Recovered,No,10736
+P106,Patient 106,M,50,Neurology,Epilepsy,2025-01-07,2025-01-17,Recovered,Yes,4143
+P107,Patient 107,F,65,Orthopedics,Arthritis,2025-01-09,2025-01-10,Recovered,No,12616
+P108,Patient 108,M,58,Oncology,Breast Cancer,2025-01-18,2025-01-26,Recovered,No,10460
+P109,Patient 109,M,74,Orthopedics,Fracture,2025-01-13,2025-01-17,Recovered,No,3715
+P110,Patient 110,F,50,Orthopedics,Arthritis,2025-01-22,2025-01-25,Recovered,Yes,5068
+P111,Patient 111,M,57,Oncology,Breast Cancer,2025-01-04,2025-01-13,Deceased,Yes,14836
+P112,Patient 112,M,10,Neurology,Epilepsy,2025-01-16,2025-01-21,Recovered,No,13646
+P113,Patient 113,F,41,Cardiology,Arrhythmia,2025-01-21,2025-01-29,Recovered,Yes,13116
+P114,Patient 114,F,30,Cardiology,Heart Attack,2025-01-24,2025-01-26,Recovered,Yes,13383
+P115,Patient 115,M,89,Cardiology,Arrhythmia,2025-01-10,2025-01-11,Recovered,Yes,7806
+P116,Patient 116,F,19,Orthopedics,Arthritis,2025-01-08,2025-01-17,Recovered,Yes,5785
+P117,Patient 117,F,80,Neurology,Stroke,2025-01-22,2025-01-26,Recovered,Yes,6804
+P118,Patient 118,F,33,Pulmonology,Pneumonia,2025-01-22,2025-01-23,Recovered,No,7712
+P119,Patient 119,M,57,Oncology,Lung Cancer,2025-01-31,2025-02-06,Deceased,No,13468
+P120,Patient 120,F,39,Pulmonology,Pneumonia,2025-01-07,2025-01-14,Recovered,Yes,6886
+P121,Patient 121,F,90,Pulmonology,Pneumonia,2025-01-10,2025-01-11,Deceased,No,7497
+P122,Patient 122,F,37,Cardiology,Heart Attack,2025-01-25,2025-01-29,Recovered,No,6588
+P123,Patient 123,M,81,Neurology,Epilepsy,2025-01-04,2025-01-05,Recovered,No,3546
+P124,Patient 124,M,12,Oncology,Breast Cancer,2025-01-30,2025-02-04,Recovered,No,5877
+P125,Patient 125,F,68,Neurology,Stroke,2025-01-17,2025-01-22,Recovered,No,10894
+P126,Patient 126,M,60,Orthopedics,Arthritis,2025-01-31,2025-02-02,Recovered,Yes,14080
+P127,Patient 127,M,51,Pulmonology,Pneumonia,2025-01-01,2025-01-06,Recovered,No,9038
+P128,Patient 128,F,14,Orthopedics,Arthritis,2025-01-22,2025-01-26,Recovered,No,12995
+P129,Patient 129,F,90,Neurology,Stroke,2025-01-10,2025-01-17,Recovered,Yes,3609
+P130,Patient 130,M,13,Orthopedics,Arthritis,2025-01-08,2025-01-17,Recovered,No,9078
+P131,Patient 131,M,54,Oncology,Breast Cancer,2025-01-21,2025-01-23,Recovered,No,7583
+P132,Patient 132,M,57,Cardiology,Arrhythmia,2025-01-15,2025-01-19,Recovered,Yes,14234
+P133,Patient 133,M,51,Orthopedics,Arthritis,2025-01-09,2025-01-13,Deceased,No,4501
+P134,Patient 134,M,43,Neurology,Stroke,2025-01-08,2025-01-11,Recovered,Yes,4124
+P135,Patient 135,M,30,Oncology,Lung Cancer,2025-01-11,2025-01-14,Recovered,Yes,7542
+P136,Patient 136,F,23,Neurology,Stroke,2025-01-04,2025-01-05,Recovered,No,6898
+P137,Patient 137,M,23,Oncology,Breast Cancer,2025-01-09,2025-01-10,Recovered,No,11619
+P138,Patient 138,F,58,Cardiology,Heart Attack,2025-01-25,2025-01-31,Recovered,Yes,10405
+P139,Patient 139,M,85,Oncology,Lung Cancer,2025-01-17,2025-01-22,Recovered,Yes,3996
+P140,Patient 140,F,88,Pulmonology,Pneumonia,2025-01-04,2025-01-12,Recovered,No,4204
+P141,Patient 141,M,9,Cardiology,Arrhythmia,2025-01-05,2025-01-10,Recovered,No,9240
+P142,Patient 142,F,65,Oncology,Breast Cancer,2025-01-20,2025-01-27,Recovered,Yes,13726
+P143,Patient 143,F,58,Oncology,Lung Cancer,2025-01-29,2025-02-02,Recovered,No,9532
+P144,Patient 144,F,55,Pulmonology,Asthma,2025-01-11,2025-01-16,Recovered,Yes,14252
+P145,Patient 145,M,11,Pulmonology,Asthma,2025-01-03,2025-01-10,Recovered,No,5131
+P146,Patient 146,F,86,Oncology,Lung Cancer,2025-01-04,2025-01-11,Recovered,No,14813
+P147,Patient 147,F,46,Cardiology,Arrhythmia,2025-01-04,2025-01-14,Recovered,Yes,13759
+P148,Patient 148,M,45,Pulmonology,Asthma,2025-01-28,2025-02-06,Recovered,No,12406
+P149,Patient 149,M,78,Neurology,Epilepsy,2025-01-30,2025-02-04,Recovered,No,14513
+P150,Patient 150,F,1,Orthopedics,Arthritis,2025-01-06,2025-01-09,Recovered,No,4140
+P151,Patient 151,M,68,Neurology,Stroke,2025-01-07,2025-01-14,Recovered,No,5578
+P152,Patient 152,F,73,Orthopedics,Arthritis,2025-01-20,2025-01-22,Recovered,Yes,5579
+P153,Patient 153,M,35,Oncology,Lung Cancer,2025-01-15,2025-01-22,Recovered,No,9785
+P154,Patient 154,M,45,Orthopedics,Fracture,2025-01-14,2025-01-16,Recovered,No,11633
+P155,Patient 155,M,51,Orthopedics,Fracture,2025-01-20,2025-01-21,Recovered,No,6460
+P156,Patient 156,F,42,Neurology,Epilepsy,2025-01-04,2025-01-05,Recovered,No,5878
+P157,Patient 157,M,65,Neurology,Epilepsy,2025-01-18,2025-01-24,Recovered,Yes,10147
+P158,Patient 158,M,41,Cardiology,Arrhythmia,2025-01-19,2025-01-26,Recovered,No,7743
+P159,Patient 159,M,42,Cardiology,Arrhythmia,2025-01-06,2025-01-16,Recovered,No,4443
+P160,Patient 160,M,56,Pulmonology,Asthma,2025-01-19,2025-01-26,Recovered,No,8083
+P161,Patient 161,F,22,Orthopedics,Fracture,2025-01-03,2025-01-12,Recovered,Yes,8724
+P162,Patient 162,M,14,Orthopedics,Fracture,2025-01-05,2025-01-10,Recovered,Yes,13739
+P163,Patient 163,F,60,Cardiology,Heart Attack,2025-01-25,2025-02-04,Recovered,No,14159
+P164,Patient 164,F,20,Oncology,Breast Cancer,2025-01-15,2025-01-17,Recovered,No,7500
+P165,Patient 165,F,65,Oncology,Lung Cancer,2025-01-03,2025-01-08,Recovered,Yes,3932
+P166,Patient 166,M,83,Orthopedics,Arthritis,2025-01-28,2025-01-30,Recovered,No,10581
+P167,Patient 167,F,74,Oncology,Lung Cancer,2025-01-21,2025-01-25,Recovered,No,11214
+P168,Patient 168,F,14,Neurology,Stroke,2025-01-26,2025-02-01,Deceased,Yes,11266
+P169,Patient 169,M,57,Neurology,Stroke,2025-01-15,2025-01-24,Recovered,Yes,8962
+P170,Patient 170,F,53,Orthopedics,Arthritis,2025-01-25,2025-01-31,Recovered,Yes,13336
+P171,Patient 171,F,13,Orthopedics,Fracture,2025-01-18,2025-01-25,Recovered,Yes,8461
+P172,Patient 172,F,40,Cardiology,Heart Attack,2025-01-31,2025-02-07,Recovered,Yes,8072
+P173,Patient 173,F,17,Oncology,Breast Cancer,2025-01-22,2025-01-31,Recovered,No,11331
+P174,Patient 174,F,40,Orthopedics,Fracture,2025-01-06,2025-01-10,Recovered,No,6145
+P175,Patient 175,M,10,Neurology,Stroke,2025-01-10,2025-01-12,Recovered,Yes,13845
+P176,Patient 176,F,20,Orthopedics,Fracture,2025-01-06,2025-01-09,Recovered,Yes,14815
+P177,Patient 177,F,47,Pulmonology,Asthma,2025-01-22,2025-01-26,Deceased,No,10355
+P178,Patient 178,F,61,Neurology,Stroke,2025-01-29,2025-02-02,Recovered,No,10564
+P179,Patient 179,F,21,Orthopedics,Arthritis,2025-01-27,2025-01-31,Recovered,Yes,7096
+P180,Patient 180,F,71,Cardiology,Arrhythmia,2025-01-30,2025-02-01,Recovered,Yes,7670
+P181,Patient 181,F,58,Cardiology,Heart Attack,2025-01-29,2025-02-07,Recovered,No,4502
+P182,Patient 182,F,4,Neurology,Epilepsy,2025-01-14,2025-01-15,Recovered,No,6862
+P183,Patient 183,F,29,Pulmonology,Asthma,2025-01-01,2025-01-07,Deceased,No,5392
+P184,Patient 184,F,61,Neurology,Stroke,2025-01-23,2025-01-26,Recovered,No,10349
+P185,Patient 185,M,3,Oncology,Lung Cancer,2025-01-09,2025-01-13,Recovered,No,4821
+P186,Patient 186,F,16,Orthopedics,Fracture,2025-01-02,2025-01-06,Recovered,No,4029
+P187,Patient 187,M,81,Cardiology,Arrhythmia,2025-01-17,2025-01-27,Recovered,Yes,7772
+P188,Patient 188,F,31,Pulmonology,Asthma,2025-01-19,2025-01-26,Recovered,Yes,11576
+P189,Patient 189,M,50,Orthopedics,Fracture,2025-01-28,2025-02-05,Recovered,No,9116
+P190,Patient 190,F,9,Orthopedics,Fracture,2025-01-12,2025-01-16,Recovered,Yes,12533
+P191,Patient 191,M,46,Orthopedics,Fracture,2025-01-18,2025-01-24,Recovered,Yes,14217
+P192,Patient 192,M,18,Pulmonology,Pneumonia,2025-01-03,2025-01-11,Recovered,Yes,3717
+P193,Patient 193,F,40,Neurology,Stroke,2025-01-17,2025-01-24,Deceased,No,7150
+P194,Patient 194,F,46,Cardiology,Heart Attack,2025-01-28,2025-01-29,Recovered,No,7476
+P195,Patient 195,F,52,Cardiology,Arrhythmia,2025-01-24,2025-02-01,Recovered,No,8554
+P196,Patient 196,F,48,Neurology,Epilepsy,2025-01-30,2025-02-08,Recovered,Yes,14912
+P197,Patient 197,F,78,Pulmonology,Asthma,2025-01-27,2025-01-30,Recovered,No,4680
+P198,Patient 198,F,40,Cardiology,Arrhythmia,2025-01-15,2025-01-25,Recovered,Yes,14301
+P199,Patient 199,F,6,Pulmonology,Pneumonia,2025-01-24,2025-01-30,Recovered,No,7498
+P200,Patient 200,F,47,Cardiology,Heart Attack,2025-01-17,2025-01-20,Deceased,Yes,12954
+P201,Patient 201,M,9,Pulmonology,Asthma,2025-01-08,2025-01-14,Recovered,Yes,12913
+P202,Patient 202,F,48,Neurology,Epilepsy,2025-01-15,2025-01-17,Recovered,No,9521
+P203,Patient 203,M,15,Orthopedics,Arthritis,2025-01-01,2025-01-04,Recovered,No,12202
+P204,Patient 204,F,58,Cardiology,Arrhythmia,2025-01-07,2025-01-17,Recovered,No,6279
+P205,Patient 205,M,58,Cardiology,Heart Attack,2025-01-06,2025-01-14,Deceased,No,13941
+P206,Patient 206,F,39,Orthopedics,Fracture,2025-01-28,2025-01-31,Recovered,Yes,8922
+P207,Patient 207,M,26,Oncology,Lung Cancer,2025-01-26,2025-01-29,Recovered,No,3430
+P208,Patient 208,F,71,Orthopedics,Arthritis,2025-01-05,2025-01-15,Recovered,Yes,8067
+P209,Patient 209,F,53,Pulmonology,Pneumonia,2025-01-27,2025-02-06,Recovered,No,13524
+P210,Patient 210,F,88,Cardiology,Arrhythmia,2025-01-17,2025-01-23,Recovered,Yes,5114
+P211,Patient 211,M,67,Pulmonology,Asthma,2025-01-05,2025-01-10,Recovered,No,14621
+P212,Patient 212,F,11,Neurology,Epilepsy,2025-01-09,2025-01-13,Recovered,No,5050
+P213,Patient 213,M,76,Orthopedics,Fracture,2025-01-31,2025-02-10,Recovered,No,12234
+P214,Patient 214,M,6,Cardiology,Heart Attack,2025-01-31,2025-02-10,Recovered,Yes,12373
+P215,Patient 215,F,81,Pulmonology,Asthma,2025-01-18,2025-01-23,Recovered,No,10912
+P216,Patient 216,F,59,Neurology,Epilepsy,2025-01-03,2025-01-04,Recovered,No,10933
+P217,Patient 217,F,78,Pulmonology,Asthma,2025-01-05,2025-01-11,Recovered,No,8658
+P218,Patient 218,F,66,Pulmonology,Asthma,2025-01-18,2025-01-20,Recovered,No,5007
+P219,Patient 219,M,19,Orthopedics,Arthritis,2025-01-04,2025-01-05,Recovered,No,13082
+P220,Patient 220,M,42,Pulmonology,Asthma,2025-01-30,2025-02-09,Recovered,Yes,5610
+P221,Patient 221,F,40,Pulmonology,Pneumonia,2025-01-16,2025-01-17,Recovered,No,11281
+P222,Patient 222,M,75,Pulmonology,Asthma,2025-01-12,2025-01-13,Recovered,No,12789
+P223,Patient 223,M,14,Pulmonology,Pneumonia,2025-01-14,2025-01-17,Recovered,No,9606
+P224,Patient 224,F,7,Orthopedics,Fracture,2025-01-19,2025-01-28,Recovered,No,4204
+P225,Patient 225,F,80,Pulmonology,Pneumonia,2025-01-22,2025-02-01,Recovered,Yes,9453
+P226,Patient 226,F,19,Orthopedics,Arthritis,2025-01-07,2025-01-17,Recovered,Yes,3742
+P227,Patient 227,F,61,Cardiology,Heart Attack,2025-01-17,2025-01-25,Recovered,Yes,8373
+P228,Patient 228,M,51,Oncology,Breast Cancer,2025-01-20,2025-01-25,Recovered,No,14611
+P229,Patient 229,F,3,Oncology,Breast Cancer,2025-01-12,2025-01-18,Recovered,No,12563
+P230,Patient 230,F,34,Orthopedics,Fracture,2025-01-31,2025-02-10,Recovered,Yes,12560
+P231,Patient 231,F,19,Pulmonology,Asthma,2025-01-27,2025-01-31,Recovered,Yes,6125
+P232,Patient 232,F,54,Cardiology,Arrhythmia,2025-01-05,2025-01-12,Recovered,No,11221
+P233,Patient 233,M,18,Oncology,Breast Cancer,2025-01-17,2025-01-21,Recovered,No,11609
+P234,Patient 234,M,59,Pulmonology,Pneumonia,2025-01-30,2025-02-08,Recovered,No,14073
+P235,Patient 235,M,32,Orthopedics,Arthritis,2025-01-09,2025-01-18,Recovered,No,7735
+P236,Patient 236,F,62,Neurology,Epilepsy,2025-01-12,2025-01-21,Deceased,No,7715
+P237,Patient 237,F,45,Cardiology,Arrhythmia,2025-01-31,2025-02-03,Recovered,No,14700
+P238,Patient 238,F,84,Cardiology,Arrhythmia,2025-01-09,2025-01-17,Recovered,No,12208
+P239,Patient 239,M,79,Orthopedics,Fracture,2025-01-24,2025-02-03,Recovered,Yes,13974
+P240,Patient 240,M,7,Oncology,Lung Cancer,2025-01-04,2025-01-11,Recovered,No,4647
+P241,Patient 241,M,53,Neurology,Stroke,2025-01-21,2025-01-29,Recovered,Yes,7706
+P242,Patient 242,M,12,Orthopedics,Arthritis,2025-01-21,2025-01-31,Recovered,Yes,5868
+P243,Patient 243,M,51,Pulmonology,Asthma,2025-01-26,2025-02-03,Recovered,No,3613
+P244,Patient 244,M,43,Cardiology,Arrhythmia,2025-01-10,2025-01-18,Deceased,No,5198
+P245,Patient 245,F,25,Oncology,Breast Cancer,2025-01-26,2025-01-28,Recovered,No,13621
+P246,Patient 246,M,44,Orthopedics,Fracture,2025-01-26,2025-01-31,Recovered,Yes,5875
+P247,Patient 247,F,66,Oncology,Breast Cancer,2025-01-11,2025-01-13,Recovered,Yes,6027
+P248,Patient 248,F,32,Neurology,Epilepsy,2025-01-01,2025-01-06,Recovered,No,7374
+P249,Patient 249,M,34,Orthopedics,Arthritis,2025-01-21,2025-01-27,Recovered,Yes,13941
+P250,Patient 250,F,21,Cardiology,Arrhythmia,2025-01-13,2025-01-22,Deceased,No,14309
+P251,Patient 251,F,79,Cardiology,Arrhythmia,2025-01-08,2025-01-12,Deceased,No,5509
+P252,Patient 252,F,90,Pulmonology,Pneumonia,2025-01-18,2025-01-26,Recovered,Yes,7054
+P253,Patient 253,F,68,Oncology,Lung Cancer,2025-01-23,2025-01-29,Recovered,Yes,4011
+P254,Patient 254,M,22,Oncology,Lung Cancer,2025-01-11,2025-01-20,Recovered,Yes,14745
+P255,Patient 255,M,66,Oncology,Breast Cancer,2025-01-15,2025-01-16,Recovered,No,10484
+P256,Patient 256,F,87,Oncology,Lung Cancer,2025-01-26,2025-01-31,Recovered,No,7169
+P257,Patient 257,M,6,Cardiology,Heart Attack,2025-01-14,2025-01-20,Recovered,Yes,4130
+P258,Patient 258,F,53,Pulmonology,Asthma,2025-01-06,2025-01-09,Recovered,No,9135
+P259,Patient 259,F,49,Pulmonology,Pneumonia,2025-01-03,2025-01-12,Recovered,No,4943
+P260,Patient 260,M,29,Neurology,Epilepsy,2025-01-27,2025-01-28,Recovered,No,10585
+P261,Patient 261,F,30,Oncology,Breast Cancer,2025-01-08,2025-01-16,Recovered,No,6088
+P262,Patient 262,F,79,Cardiology,Heart Attack,2025-01-25,2025-01-26,Recovered,Yes,4653
+P263,Patient 263,F,77,Oncology,Lung Cancer,2025-01-22,2025-01-23,Recovered,Yes,9590
+P264,Patient 264,M,8,Pulmonology,Asthma,2025-01-05,2025-01-14,Deceased,Yes,14985
+P265,Patient 265,F,31,Oncology,Breast Cancer,2025-01-10,2025-01-13,Deceased,Yes,9775
+P266,Patient 266,M,72,Orthopedics,Arthritis,2025-01-31,2025-02-10,Recovered,Yes,13256
+P267,Patient 267,M,45,Pulmonology,Pneumonia,2025-01-31,2025-02-07,Recovered,No,14408
+P268,Patient 268,M,39,Pulmonology,Pneumonia,2025-01-13,2025-01-16,Recovered,No,6948
+P269,Patient 269,M,60,Neurology,Epilepsy,2025-01-30,2025-01-31,Recovered,No,12130
+P270,Patient 270,F,32,Oncology,Lung Cancer,2025-01-09,2025-01-13,Recovered,Yes,10369
+P271,Patient 271,M,7,Orthopedics,Fracture,2025-01-09,2025-01-16,Recovered,Yes,4192
+P272,Patient 272,F,27,Neurology,Stroke,2025-01-28,2025-02-03,Recovered,Yes,6470
+P273,Patient 273,F,32,Neurology,Stroke,2025-01-23,2025-02-02,Recovered,No,6921
+P274,Patient 274,F,49,Oncology,Breast Cancer,2025-01-15,2025-01-24,Recovered,No,7285
+P275,Patient 275,F,13,Orthopedics,Arthritis,2025-01-26,2025-02-03,Recovered,No,6328
+P276,Patient 276,F,6,Orthopedics,Arthritis,2025-01-19,2025-01-23,Recovered,Yes,7272
+P277,Patient 277,F,20,Oncology,Breast Cancer,2025-01-07,2025-01-13,Recovered,Yes,11180
+P278,Patient 278,F,63,Oncology,Breast Cancer,2025-01-31,2025-02-08,Recovered,No,5773
+P279,Patient 279,M,70,Neurology,Epilepsy,2025-01-21,2025-01-22,Recovered,Yes,13948
+P280,Patient 280,F,18,Cardiology,Heart Attack,2025-01-27,2025-01-31,Recovered,Yes,3149
+P281,Patient 281,F,8,Neurology,Epilepsy,2025-01-20,2025-01-30,Deceased,No,3257
+P282,Patient 282,M,3,Cardiology,Arrhythmia,2025-01-17,2025-01-22,Recovered,No,3280
+P283,Patient 283,M,14,Oncology,Breast Cancer,2025-01-30,2025-02-01,Recovered,Yes,6144
+P284,Patient 284,F,35,Oncology,Breast Cancer,2025-01-26,2025-02-02,Recovered,No,10520
+P285,Patient 285,M,39,Oncology,Lung Cancer,2025-01-22,2025-01-24,Recovered,Yes,4531
+P286,Patient 286,F,71,Pulmonology,Pneumonia,2025-01-16,2025-01-17,Recovered,Yes,4354
+P287,Patient 287,F,73,Pulmonology,Pneumonia,2025-01-28,2025-01-30,Recovered,Yes,6764
+P288,Patient 288,F,6,Neurology,Epilepsy,2025-01-30,2025-02-01,Recovered,No,11897
+P289,Patient 289,M,41,Oncology,Lung Cancer,2025-01-01,2025-01-05,Recovered,No,4260
+P290,Patient 290,M,73,Orthopedics,Fracture,2025-01-27,2025-02-03,Recovered,No,9288
+P291,Patient 291,F,7,Neurology,Stroke,2025-01-04,2025-01-11,Recovered,Yes,8580
+P292,Patient 292,F,4,Oncology,Breast Cancer,2025-01-21,2025-01-26,Recovered,No,11038
+P293,Patient 293,F,56,Neurology,Epilepsy,2025-01-06,2025-01-16,Recovered,Yes,13135
+P294,Patient 294,M,11,Orthopedics,Fracture,2025-01-09,2025-01-12,Recovered,Yes,9383
+P295,Patient 295,M,12,Orthopedics,Arthritis,2025-01-01,2025-01-06,Recovered,No,4674
+P296,Patient 296,M,56,Neurology,Stroke,2025-01-15,2025-01-24,Recovered,No,4692
+P297,Patient 297,F,71,Cardiology,Heart Attack,2025-01-03,2025-01-13,Recovered,No,9311
+P298,Patient 298,F,50,Cardiology,Arrhythmia,2025-01-25,2025-01-27,Recovered,Yes,12370
+P299,Patient 299,F,22,Oncology,Lung Cancer,2025-01-05,2025-01-10,Recovered,No,5390
+P300,Patient 300,F,36,Cardiology,Heart Attack,2025-01-14,2025-01-19,Recovered,Yes,8916

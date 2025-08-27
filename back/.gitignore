@@ -1,0 +1,69 @@
+# Node modules
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Dependency directories
+jspm_packages/
+
+# dotenv environment variables
+.env
+.env.*.local
+.env.local
+
+# Build outputs
+dist/
+build/
+coverage/
+
+# TypeScript
+*.tsbuildinfo
+
+# Optional caches
+.cache/
+.next/
+.nuxt/
+out/
+tmp/
+temp/
+
+# Editor directories and files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.swp
+*.sublime-workspace
+*.sublime-project
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-compose.override.yml
+*.pid
+*.pid.lock
+
+# Testing
+coverage/
+.nyc_output/
+
+# Misc
+*.bak
+*.orig
