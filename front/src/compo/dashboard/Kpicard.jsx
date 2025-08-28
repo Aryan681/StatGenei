@@ -6,7 +6,7 @@ const KpiCards = ({ kpis, theme = "default" }) => {
 
   // Genie-themed color variations for different cards
   const genieColors = [
-    "from-yellow-400 to-orange-500", // Gold
+    "from-yellow-300 to-orange-300", // Gold
     "from-purple-500 to-indigo-600", // Purple
     "from-teal-400 to-blue-500",     // Blue
     "from-pink-500 to-red-500",      // Red

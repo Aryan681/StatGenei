@@ -66,15 +66,15 @@ const Navbar = ({ scrollToDashboard, scrollToFooter, scrollToHome }) => {
   );
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 flex justify-center w-full">
+    <div className="fixed  left-0 right-0 z-50 flex justify-center w-full">
       <nav
         ref={navbarRef}
         className={`
           mx-auto z-50 w-[98%] max-w-6xl mt-4 px-4 sm:px-6 lg:px-8
           transition-all duration-300 
           ${isScrolled 
-            ? "bg-white/90 backdrop-blur-md shadow-lg border border-purple-100/30" 
-            : "bg-gradient-to-r from-pink-500 to-red-500 border-b border-red-400/30 backdrop-blur-sm"
+            ? "bg-black/90 backdrop-blur-md shadow-lg border border-purple-100/30" 
+            : "bg-white/90 border-b border-red-400/30 backdrop-blur-sm"
           }
           rounded-2xl
           flex items-center justify-between h-16
@@ -88,7 +88,7 @@ const Navbar = ({ scrollToDashboard, scrollToFooter, scrollToHome }) => {
               alt="Logo"
               className="h-12 w-12 rounded-xl transition-transform duration-300 group-hover:scale-110"
             />
-            <span className={`text-xl font-bold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent ${isScrolled ? "" : "drop-shadow-md"}`}>
+            <span className={`text-xl font-bold bg-gradient-to-r from-purple-600 to-indigo-700 bg-clip-text text-transparent ${isScrolled ? "" : "drop-shadow-md"}`}>
               StatGenie
             </span>
           </Link>
@@ -100,7 +100,7 @@ const Navbar = ({ scrollToDashboard, scrollToFooter, scrollToHome }) => {
             to="/"
             onClick={scrollToHome}
             className={`relative px-3 py-2 font-medium transition duration-300 ease-in-out focus:outline-none group ${
-              isScrolled ? "text-gray-700 hover:text-purple-600" : "text-purple-100 hover:text-yellow-300"
+              isScrolled ? "text-white hover:text-purple-600" : "text-black hover:text-emerald-400"
             }`}
           >
             Home
@@ -113,7 +113,7 @@ const Navbar = ({ scrollToDashboard, scrollToFooter, scrollToHome }) => {
             to="/Dashboard"
             onClick={scrollToDashboard}
             className={`relative px-3 py-2 font-medium transition duration-300 ease-in-out focus:outline-none group ${
-              isScrolled ? "text-gray-700 hover:text-purple-600" : "text-purple-100 hover:text-yellow-300"
+              isScrolled ? "text-white hover:text-purple-600" : "text-purple-100 hover:text-yellow-300"
             }`}
           >
             Dashboard
@@ -129,7 +129,7 @@ const Navbar = ({ scrollToDashboard, scrollToFooter, scrollToHome }) => {
             }}
             href="#footer"
             className={`relative px-3 py-2 font-medium transition duration-300 ease-in-out focus:outline-none group ${
-              isScrolled ? "text-gray-700 hover:text-purple-600" : "text-purple-100 hover:text-yellow-300"
+              isScrolled ? "text-white hover:text-purple-600" : "text-purple-100 hover:text-yellow-300"
             }`}
           >
             Contact
@@ -145,7 +145,7 @@ const Navbar = ({ scrollToDashboard, scrollToFooter, scrollToHome }) => {
               onMouseLeave={handleMouseLeave}
             >
               <div className={`flex items-center space-x-2 transition-colors duration-200 font-medium cursor-pointer ${
-                isScrolled ? "text-gray-700 hover:text-purple-600" : "text-purple-100 hover:text-yellow-300"
+                isScrolled ? "text-white hover:text-purple-600" : "text-purple-100 hover:text-yellow-300"
               }`}>
                 <span>{user.name}</span>
                 <svg

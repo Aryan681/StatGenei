@@ -171,7 +171,7 @@ const FileUpload = ({ onFileSelect, loading, onUpload, theme = "default" }) => {
             : !file 
               ? "bg-gray-600/80 cursor-not-allowed text-gray-400" 
               : isGenieTheme
-                ? "bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 transform hover:scale-105 shadow-lg shadow-yellow-500/40 text-white"
+                ? "bg-gradient-to-r from-pink-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 transform hover:scale-105 shadow-lg shadow-yellow-500/40 text-white"
                 : "bg-blue-600 hover:bg-blue-700 text-white"
           }`}
       >

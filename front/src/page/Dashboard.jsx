@@ -108,7 +108,7 @@ const Dashboard = () => {
       <div
         className="absolute  inset-0 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 parallax"
         data-speed="0.1"
-        style={{ willChange: "transform", height: "950vh" }}
+        style={{ willChange: "transform", height: "1500vh" }}
       ></div>
             {/* Animated Magic Particles with Parallax */}     {" "}
       <div className="absolute inset-0 overflow-hidden">
@@ -380,7 +380,7 @@ const Dashboard = () => {
           <div className="space-y-10 animate-fade-in-up">
                         <KpiCards kpis={data.kpis} theme="genie" />
                         <DataSummary data={data} theme="genie" />
-                        <Charts charts={data.charts} theme="genie" />
+                        <Charts charts={data.charts} slicers={data.slicers} theme="genie" />
                         <DataStory dataStory={data.data_story} theme="genie" /> 
                    {" "}
           </div>

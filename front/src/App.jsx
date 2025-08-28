@@ -88,12 +88,12 @@ const AppRoutes = () => {
             </Routes>
           </main>
           {/* Footer at the bottom */}
-          <Footer
+          {/* <Footer
             scrollToHome={scrollToHome}
             scrollToFeatures={scrollToFeatures}
             scrollToFooter={scrollToFooter}
             footerRef={footerRef}
-          />
+          /> */}
         </div>
       </AuthProvider>
     </Router>
