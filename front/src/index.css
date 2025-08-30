@@ -1,9 +1,27 @@
 @import "tailwindcss";
 
-
+/* In your external CSS file, e.g., styles.css */
+body {
+  background: linear-gradient(
+    to bottom,
+    rgba(240, 240, 240, 0.9), /* Semi-transparent light gray */
+    rgba(255, 255, 255, 0.8), /* Semi-transparent white */
+    rgba(245, 245, 245, 0.9) /* Another semi-transparent light gray */
+  );
+  background-attachment: fixed; /* Optional: fixes the gradient to the viewport */
+  min-height: 100vh; /* Ensures the gradient covers the full viewport height */
+}
 /* Hide scrollbar for Chrome, Safari and Opera */
 body::-webkit-scrollbar {
   display: none;
+}
+@font-face {
+  font-family: 'Gyrotrope-Regular';
+  src: url('./Gyrotrope-Regular.otf') format('opentype');
+}
+
+.font-gyrotrope {
+  font-family: 'Gyrotrope-Regular', sans-serif;
 }
 
 @keyframes bounce-slow {
@@ -29,3 +47,27 @@ body::-webkit-scrollbar {
 .animate-fade-in-up { animation: fade-in-up 0.8s ease-out; }
 
 
+
+/* In a separate CSS file like 'styles.css' */
+.hide-scrollbar {
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+  scrollbar-width: none; /* For Firefox */
+}
+
+/* For Chrome, Safari, and Opera */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.radial-gradient {
+  background: radial-gradient(circle at 50% 10%, #4c1d95, transparent),
+              radial-gradient(circle at 80% 90%, #6d28d9, transparent);
+  background-color: #0c0a09;
+  z-index: 0;
+}
+.radial-gradient-variant {
+  background: radial-gradient(circle at 10% 80%, #a855f7, transparent),
+              radial-gradient(circle at 90% 20%, #4f46e5, transparent);
+  background-color: #0c0a09;
+  z-index: 0;
+}

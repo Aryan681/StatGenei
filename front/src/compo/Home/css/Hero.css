@@ -1,0 +1,43 @@
+/* src/TerminalFrame.css */
+
+.mac-terminal-frame {
+  position: relative;
+  background-color: #333; /* Dark grey for the terminal body */
+  border-radius: 8px; /* Rounded corners for the terminal window */
+  padding-top: 25px; /* Space for the header bar */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+  overflow: hidden; /* Ensure content inside stays within bounds */
+}
+
+.mac-terminal-frame::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 25px; /* Height of the header bar */
+  background-color: #e0e0e0; /* Light grey for the header bar */
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  z-index: 1; /* Ensure it's above the image */
+}
+
+.mac-terminal-frame::after {
+  content: " "; /* Placeholder for the control buttons */
+  position: absolute;
+  top: 8px; /* Vertical position of the buttons */
+  left: 10px; /* Horizontal position of the buttons */
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ff5f56; /* Red (close) */
+  box-shadow: 20px 0 0 #ffbd2e, 40px 0 0 #27c93f; /* Yellow (minimize) and Green (maximize) */
+  z-index: 2; /* Ensure buttons are on top */
+}
+
+.mac-terminal-content {
+  position: relative; /* Context for children */
+  z-index: 0; /* Below the header pseudo-elements */
+  padding: 0px; /* Adjust padding if necessary for the content */
+}
+

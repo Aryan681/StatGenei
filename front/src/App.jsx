@@ -6,7 +6,6 @@ import {
 } from "react-router-dom";
 import { AuthProvider, useAuth } from "./compo/auth/context";
 import Navbar from "./bais/Navbar";
-import Footer from "./bais/Footer";
 import { useRef, useEffect, useState } from "react";
 import Login from "./page/Login";
 import Register from "./page/Signup";
@@ -87,13 +86,7 @@ const AppRoutes = () => {
               />
             </Routes>
           </main>
-          {/* Footer at the bottom */}
-          {/* <Footer
-            scrollToHome={scrollToHome}
-            scrollToFeatures={scrollToFeatures}
-            scrollToFooter={scrollToFooter}
-            footerRef={footerRef}
-          /> */}
+        
         </div>
       </AuthProvider>
     </Router>

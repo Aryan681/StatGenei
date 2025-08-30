@@ -24,11 +24,13 @@ const Navbar = ({ scrollToDashboard, scrollToFooter, scrollToHome }) => {
 
   // GSAP animation for navbar appearance
   useEffect(() => {
-    gsap.fromTo(
-      navbarRef.current,
-      { y: -100, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
-    );
+    if (navbarRef.current) {
+      gsap.fromTo(
+        navbarRef.current,
+        { y: -200, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1, ease: "power4.out" }
+      );
+    }
   }, []);
 
   const handleLogout = async () => {
@@ -71,10 +73,10 @@ const Navbar = ({ scrollToDashboard, scrollToFooter, scrollToHome }) => {
         ref={navbarRef}
         className={`
           mx-auto z-50 w-[98%] max-w-6xl mt-4 px-4 sm:px-6 lg:px-8
-          transition-all duration-300 
-          ${isScrolled 
-            ? "bg-black/90 backdrop-blur-md shadow-lg border border-purple-100/30" 
-            : "bg-white/90 border-b border-red-400/30 backdrop-blur-sm"
+          ${
+            isScrolled
+              ? "bg-black/90 backdrop-blur-md shadow-lg border border-white "
+              : "bg-white/90  backdrop-blur-sm"
           }
           rounded-2xl
           flex items-center justify-between h-16
@@ -88,7 +90,11 @@ const Navbar = ({ scrollToDashboard, scrollToFooter, scrollToHome }) => {
               alt="Logo"
               className="h-12 w-12 rounded-xl transition-transform duration-300 group-hover:scale-110"
             />
-            <span className={`text-xl font-bold bg-gradient-to-r from-purple-600 to-indigo-700 bg-clip-text text-transparent ${isScrolled ? "" : "drop-shadow-md"}`}>
+            <span
+              className={`text-xl font-bold bg-gradient-to-r from-purple-600 to-indigo-700 bg-clip-text text-transparent ${
+                isScrolled ? "" : "drop-shadow-md"
+              }`}
+            >
               StatGenie
             </span>
           </Link>
@@ -100,26 +106,38 @@ const Navbar = ({ scrollToDashboard, scrollToFooter, scrollToHome }) => {
             to="/"
             onClick={scrollToHome}
             className={`relative px-3 py-2 font-medium transition duration-300 ease-in-out focus:outline-none group ${
-              isScrolled ? "text-white hover:text-purple-600" : "text-black hover:text-emerald-400"
+              isScrolled
+                ? "text-white hover:text-purple-600"
+                : "text-black  hover:text-blue-600"
             }`}
           >
             Home
-            <span className={`absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-yellow-400 to-orange-400 transition-all duration-500 group-hover:w-full ${
-              isScrolled ? "" : "group-hover:shadow-lg group-hover:shadow-yellow-400/30"
-            }`}></span>
+            <span
+              className={`absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-yellow-400 to-orange-400 transition-all duration-500 group-hover:w-full ${
+                isScrolled
+                  ? ""
+                  : "group-hover:shadow-lg group-hover:shadow-yellow-400/30"
+              }`}
+            ></span>
           </Link>
 
           <Link
             to="/Dashboard"
             onClick={scrollToDashboard}
             className={`relative px-3 py-2 font-medium transition duration-300 ease-in-out focus:outline-none group ${
-              isScrolled ? "text-white hover:text-purple-600" : "text-purple-100 hover:text-yellow-300"
+              isScrolled
+                ? "text-white hover:text-purple-600"
+                : "text-black  hover:text-blue-600"
             }`}
           >
             Dashboard
-            <span className={`absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-yellow-400 to-orange-400 transition-all duration-500 group-hover:w-full ${
-              isScrolled ? "" : "group-hover:shadow-lg group-hover:shadow-yellow-400/30"
-            }`}></span>
+            <span
+              className={`absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-yellow-400 to-orange-400 transition-all duration-500 group-hover:w-full ${
+                isScrolled
+                  ? ""
+                  : "group-hover:shadow-lg group-hover:shadow-yellow-400/30"
+              }`}
+            ></span>
           </Link>
 
           <a
@@ -129,13 +147,19 @@ const Navbar = ({ scrollToDashboard, scrollToFooter, scrollToHome }) => {
             }}
             href="#footer"
             className={`relative px-3 py-2 font-medium transition duration-300 ease-in-out focus:outline-none group ${
-              isScrolled ? "text-white hover:text-purple-600" : "text-purple-100 hover:text-yellow-300"
+              isScrolled
+                ? "text-white hover:text-purple-600"
+                : "text-black  hover:text-blue-600"
             }`}
           >
             Contact
-            <span className={`absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-yellow-400 to-orange-400 transition-all duration-500 group-hover:w-full ${
-              isScrolled ? "" : "group-hover:shadow-lg group-hover:shadow-yellow-400/30"
-            }`}></span>
+            <span
+              className={`absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-yellow-400 to-orange-400 transition-all duration-500 group-hover:w-full ${
+                isScrolled
+                  ? ""
+                  : "group-hover:shadow-lg group-hover:shadow-yellow-400/30"
+              }`}
+            ></span>
           </a>
 
           {user ? (
@@ -144,9 +168,13 @@ const Navbar = ({ scrollToDashboard, scrollToFooter, scrollToHome }) => {
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
-              <div className={`flex items-center space-x-2 transition-colors duration-200 font-medium cursor-pointer ${
-                isScrolled ? "text-white hover:text-purple-600" : "text-purple-100 hover:text-yellow-300"
-              }`}>
+              <div
+                className={`flex items-center space-x-2 transition-colors duration-200 font-medium cursor-pointer ${
+                  isScrolled
+                    ? "text-white hover:text-purple-600"
+                    : "text-purple-100 hover:text-yellow-300"
+                }`}
+              >
                 <span>{user.name}</span>
                 <svg
                   className={`w-4 h-4 transition-transform duration-200 ${
@@ -171,9 +199,9 @@ const Navbar = ({ scrollToDashboard, scrollToFooter, scrollToHome }) => {
               <Link
                 to="/login"
                 className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-                  isScrolled 
-                    ? "text-purple-600 hover:bg-purple-50 border border-purple-200" 
-                    : "text-yellow-300 hover:bg-purple-700/30 border border-purple-400/30"
+                  isScrolled
+                    ? "text-purple-600 hover:bg-purple-50 border border-purple-200"
+                    : "text-purple-600 hover:bg-purple-700/30 border border-purple-400"
                 }`}
               >
                 Login
@@ -181,9 +209,9 @@ const Navbar = ({ scrollToDashboard, scrollToFooter, scrollToHome }) => {
               <Link
                 to="/register"
                 className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-                  isScrolled 
-                    ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:shadow-lg" 
-                    : "bg-gradient-to-r from-yellow-400 to-orange-400 text-purple-900 hover:shadow-lg hover:shadow-yellow-400/30"
+                  isScrolled
+                    ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:shadow-lg"
+                    : "bg-gradient-to-r  from-purple-600 to-indigo-600 text-black hover:shadow-lg hover:shadow-yellow-400/30"
                 }`}
               >
                 Sign Up
@@ -203,7 +231,7 @@ const Navbar = ({ scrollToDashboard, scrollToFooter, scrollToHome }) => {
             <svg
               className="h-6 w-6"
               fill="none"
-              stroke="currentColor"
+              stroke="black"
               viewBox="0 0 24 24"
             >
               {isMenuOpen ? (
@@ -227,11 +255,13 @@ const Navbar = ({ scrollToDashboard, scrollToFooter, scrollToHome }) => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className={`md:hidden absolute top-full left-0 w-full backdrop-blur-md border-t rounded-b-xl px-4 py-4 ${
-            isScrolled 
-              ? "bg-white/95 border-gray-100/30" 
-              : "bg-purple-900/95 border-purple-500/30"
-          }`}>
+          <div
+            className={`md:hidden absolute top-full left-0 w-full backdrop-blur-md border-t rounded-b-xl px-4 py-4 ${
+              isScrolled
+                ? "bg-white/95 border-gray-100/30"
+                : "bg-purple-900/95 border-purple-500/30"
+            }`}
+          >
             <ul className="flex flex-col space-y-3">
               <li>
                 <a
@@ -242,7 +272,9 @@ const Navbar = ({ scrollToDashboard, scrollToFooter, scrollToHome }) => {
                   }}
                   href="#home"
                   className={`block py-2 font-medium transition duration-300 ${
-                    isScrolled ? "text-gray-700 hover:text-purple-600" : "text-purple-100 hover:text-yellow-300"
+                    isScrolled
+                      ? "text-gray-700 hover:text-purple-600"
+                      : "text-purple-100 hover:text-yellow-300"
                   }`}
                 >
                   Home
@@ -253,7 +285,9 @@ const Navbar = ({ scrollToDashboard, scrollToFooter, scrollToHome }) => {
                   to="/Dashboard"
                   onClick={() => setIsMenuOpen(false)}
                   className={`block py-2 font-medium transition duration-300 ${
-                    isScrolled ? "text-gray-700 hover:text-purple-600" : "text-purple-100 hover:text-yellow-300"
+                    isScrolled
+                      ? "text-gray-700 hover:text-purple-600"
+                      : "text-purple-100 hover:text-yellow-300"
                   }`}
                 >
                   Dashboard
@@ -268,7 +302,9 @@ const Navbar = ({ scrollToDashboard, scrollToFooter, scrollToHome }) => {
                   }}
                   href="#footer"
                   className={`block py-2 font-medium transition duration-300 ${
-                    isScrolled ? "text-gray-700 hover:text-purple-600" : "text-purple-100 hover:text-yellow-300"
+                    isScrolled
+                      ? "text-gray-700 hover:text-purple-600"
+                      : "text-purple-100 hover:text-yellow-300"
                   }`}
                 >
                   Contact
@@ -282,7 +318,9 @@ const Navbar = ({ scrollToDashboard, scrollToFooter, scrollToHome }) => {
                       setIsMenuOpen(false);
                     }}
                     className={`w-full text-left py-2 font-medium transition duration-300 ${
-                      isScrolled ? "text-gray-700 hover:text-purple-600" : "text-purple-100 hover:text-yellow-300"
+                      isScrolled
+                        ? "text-gray-700 hover:text-purple-600"
+                        : "text-purple-100 hover:text-yellow-300"
                     }`}
                   >
                     Logout
@@ -293,8 +331,8 @@ const Navbar = ({ scrollToDashboard, scrollToFooter, scrollToHome }) => {
                       to="/login"
                       onClick={() => setIsMenuOpen(false)}
                       className={`py-2 text-center font-medium rounded-lg transition-all duration-300 ${
-                        isScrolled 
-                          ? "text-purple-600 hover:bg-purple-50 border border-purple-200" 
+                        isScrolled
+                          ? "text-purple-600 hover:bg-purple-50 border border-purple-200"
                           : "text-yellow-300 hover:bg-purple-700/30 border border-purple-400/30"
                       }`}
                     >
@@ -304,8 +342,8 @@ const Navbar = ({ scrollToDashboard, scrollToFooter, scrollToHome }) => {
                       to="/register"
                       onClick={() => setIsMenuOpen(false)}
                       className={`py-2 text-center font-medium rounded-lg transition-all duration-300 ${
-                        isScrolled 
-                          ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-white" 
+                        isScrolled
+                          ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-white"
                           : "bg-gradient-to-r from-yellow-400 to-orange-400 text-purple-900"
                       }`}
                     >
