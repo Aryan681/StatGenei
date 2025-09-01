@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
-const NewFooter = () => {
+const NewFooter = forwardRef((props, ref) => {
   return (
-    <footer className="bg-gray-900 py-12 px-8 border-t border-white border-opacity-10">
+    <footer ref={ref} className="bg-gray-900 py-12 px-8 border-t border-white border-opacity-10">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
         <div>
           <div className="flex items-center mb-6">
@@ -99,6 +99,6 @@ const NewFooter = () => {
       </div>
     </footer>
   );
-};
+});
 
 export default NewFooter;

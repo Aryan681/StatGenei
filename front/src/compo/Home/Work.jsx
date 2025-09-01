@@ -2,7 +2,8 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
-import "./css/Work.css"
+import "./css/Work.css";
+
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const HowItWorks = () => {
@@ -11,51 +12,56 @@ const HowItWorks = () => {
   const stepRefs = useRef([]);
   const videoRefs = useRef([]);
 
+  const stepsData = [
+    {
+      step: "01",
+      title: "Upload Your Data",
+      description:
+        "Drag and drop your CSV, Excel, or JSON file. Our system automatically detects the structure and content.",
+      direction: "left",
+      videoSrc: "./drag.webm",
+      poster: "./drag_poster.jpg",
+    },
+    {
+      step: "02",
+      title: "Automatic Analysis",
+      description:
+        "Our AI engine identifies key metrics, relationships, and patterns worth highlighting.",
+      direction: "right",
+      videoSrc: "./loading.webm",
+      poster: "./loading_poster.jpg",
+    },
+    {
+      step: "03",
+      title: "Dashboard Generation",
+      description:
+        "We create a complete dashboard with visualizations, KPIs, and a data story tailored to your dataset.",
+      direction: "left",
+      videoSrc: "./dashh.webm",
+      poster: "./dashh_poster.jpg",
+    },
+    {
+      step: "04",
+      title: "Explore & Share",
+      description:
+        "Interact with your dashboard, customize it, and share insights with your team or clients.",
+      direction: "right",
+      videoSrc: "./video_share.mp4",
+      poster: "./share_poster.jpg",
+    },
+  ];
+
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Hollow to Fill Text Animation
+      // Title Animation using SplitText
       if (titleRef.current) {
-        // Split the text into words
-        const mySplitText = new SplitText(titleRef.current, {
-          type: "words, chars",
-        });
-        const words = mySplitText.words;
-        const chars = mySplitText.chars;
+        // Split into words for entrance
+        const splitWords = new SplitText(titleRef.current, { type: "words" });
+        const midIndex = Math.ceil(splitWords.words.length / 2);
 
-        // Set initial state for filled text on characters for the hover effect
-        gsap.set(chars, {
-          color: "black",
-          webkitTextStroke: "1px black",
-        });
-
-        // Animate each character on hover
-        chars.forEach((char) => {
-          char.addEventListener("mouseenter", () => {
-            gsap.to(char, {
-              color: "transparent",
-              webkitTextStroke: "1px black",
-              duration: 0.3,
-              ease: "power2.out",
-            });
-          });
-
-          char.addEventListener("mouseleave", () => {
-            gsap.to(char, {
-              color: "black",
-              duration: 0.3,
-              ease: "power2.out",
-            });
-          });
-        });
-
-        // Main scroll animation for the words
-        // Split the words into two halves
-        const firstHalfWords = words.slice(0, Math.ceil(words.length / 2));
-        const secondHalfWords = words.slice(Math.ceil(words.length / 2));
-
-        // Animate the first half from the left
+        // Animate first half from left
         gsap.fromTo(
-          firstHalfWords,
+          splitWords.words.slice(0, midIndex),
           { opacity: 0, x: -100 },
           {
             opacity: 1,
@@ -71,9 +77,9 @@ const HowItWorks = () => {
           }
         );
 
-        // Animate the second half from the right
+        // Animate second half from right
         gsap.fromTo(
-          secondHalfWords,
+          splitWords.words.slice(midIndex),
           { opacity: 0, x: 100 },
           {
             opacity: 1,
@@ -88,100 +94,74 @@ const HowItWorks = () => {
             },
           }
         );
-      }
 
-      // Animate the main title on scroll
-      if (titleRef.current) {
-        gsap.fromTo(
-          titleRef.current,
-          { opacity: 0, y: 50 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: titleRef.current,
-              start: "top 80%",
-              toggleActions: "play none none reverse",
-            },
-          }
-        );
-      }
+        // Now split into chars for hover
+        const splitChars = new SplitText(titleRef.current, { type: "chars" });
 
-      // Animate each step block separately
-      stepRefs.current.forEach((el, index) => {
-        gsap.fromTo(
-          el,
-          { opacity: 0, x: index % 2 === 0 ? -100 : 100 },
-          {
-            opacity: 1,
-            x: 0,
-            duration: 1,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: el,
-              start: "top 80%",
-              toggleActions: "play none none reverse",
-            },
-          }
-        );
-      });
-
-      // Animate each video div
-      videoRefs.current.forEach((el, index) => {
-        gsap.fromTo(
-          el,
-          { opacity: 0, scale: 0.8 },
-          {
-            opacity: 1,
-            scale: 1,
-            duration: 1,
-            ease: "back.out(1.7)",
-            scrollTrigger: {
-              trigger: el,
-              start: "top 80%",
-              toggleActions: "play none none reverse",
-              onEnter: () => {
-                const video = el.querySelector('video');
-                if (video && video.paused) {
-                  video.play();
-                }
-              },
-              onLeave: () => {
-                const video = el.querySelector('video');
-                if (video && !video.paused) {
-                  video.pause();
-                }
-              },
-              onEnterBack: () => {
-                const video = el.querySelector('video');
-                if (video && video.paused) {
-                  video.play();
-                }
-              },
-              onLeaveBack: () => {
-                const video = el.querySelector('video');
-                if (video && !video.paused) {
-                  video.pause();
-                }
-              }
-            },
-          }
-        );
-        const hoverTween = gsap.to(el, {
-          scale: 1.05,
-          paused: true,
-          duration: 0.5,
+        splitChars.chars.forEach((char) => {
+          char.style.transition = "color 0.3s ease";
+          char.addEventListener("mouseenter", () => {
+            char.style.color = "white";
+          });
+          char.addEventListener("mouseleave", () => {
+            char.style.color = ""; // reset to inherited
+          });
         });
+      }
 
-        el.addEventListener("mouseenter", () => hoverTween.play());
-        el.addEventListener("mouseleave", () => hoverTween.reverse());
+      // Animate steps and videos
+      stepsData.forEach((item, index) => {
+        const stepEl = stepRefs.current[index];
+        const videoEl = videoRefs.current[index];
+
+        if (stepEl && videoEl) {
+          // Animate step text
+          gsap.fromTo(
+            stepEl,
+            { opacity: 0, x: item.direction === "left" ? -100 : 100 },
+            {
+              opacity: 1,
+              x: 0,
+              duration: 1,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: stepEl,
+                start: "top 80%",
+                toggleActions: "play none none reverse",
+              },
+            }
+          );
+
+          // Animate video and control playback
+          gsap.fromTo(
+            videoEl,
+            { opacity: 0, scale: 0.8 },
+            {
+              opacity: 1,
+              scale: 1,
+              duration: 1,
+              ease: "back.out(1.7)",
+              scrollTrigger: {
+                trigger: videoEl,
+                start: "top 80%",
+                toggleActions: "play none none reverse",
+                onEnter: () => videoEl.querySelector("video")?.play(),
+                onLeave: () => videoEl.querySelector("video")?.pause(),
+                onEnterBack: () => videoEl.querySelector("video")?.play(),
+                onLeaveBack: () => videoEl.querySelector("video")?.pause(),
+              },
+            }
+          );
+
+          // Optional hover effect for video
+          gsap.to(videoEl, { scale: 1.05, paused: true, duration: 0.5 });
+        }
       });
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
+
   return (
     <section
       ref={sectionRef}
@@ -192,57 +172,22 @@ const HowItWorks = () => {
           ref={titleRef}
           className="angkor-regular text-8xl font-bold text-center mb-25"
         >
-          How It Works !
+          How It Works!
         </h2>
-        <div className="">
-          {[
-            {
-              step: "01",
-              title: "Upload Your Data",
-              description:
-                "Simply drag and drop your CSV, Excel, or JSON file. Our system automatically detects the structure and content of your data.",
-              direction: "left",
-              videoSrc: "./drag.webm",
-              poster: "./drag_poster.jpg"
-            },
-            {
-              step: "02",
-              title: "Automatic Analysis",
-              description:
-                "Our AI engine processes your data, identifies key metrics, relationships, and patterns worth highlighting.",
-              direction: "right",
-              videoSrc: "./loading.webm",
-              poster: "./loading_poster.jpg"
-            },
-            {
-              step: "03",
-              title: "Dashboard Generation",
-              description:
-                "We create a complete dashboard with appropriate visualizations, KPIs, and a data story tailored to your dataset.",
-              direction: "left",
-              videoSrc: "./dashh.webm",
-              poster: "./dashh_poster.jpg"
-            },
-            {
-              step: "04",
-              title: "Explore & Share",
-              description:
-                "Interact with your dashboard, customize if needed, and share insights with your team or clients.",
-              direction: "right",
-              videoSrc: "./video_share.mp4",
-              poster: "./share_poster.jpg"
-            },
-          ].map((item, index) => (
+        <div className="grid gap-16">
+          {stepsData.map((item, index) => (
             <div
               key={index}
               className={`flex flex-col ${
                 item.direction === "right"
                   ? "md:flex-row-reverse"
                   : "md:flex-row"
-              } items-center gap-18 mb-5`}
-              ref={(el) => (stepRefs.current[index] = el)}
+              } items-center gap-18`}
             >
-              <div className="flex-1">
+              <div
+                ref={(el) => (stepRefs.current[index] = el)}
+                className="flex-1"
+              >
                 <span className="text-6xl font-bold text-gray-700">
                   {item.step}
                 </span>
@@ -250,19 +195,31 @@ const HowItWorks = () => {
                 <p className="text-gray-400">{item.description}</p>
               </div>
               <div
-                className="flex-1 rounded-xl overflow-hidden border border-white border-opacity-10"
                 ref={(el) => (videoRefs.current[index] = el)}
+                className="flex-1 rounded-xl overflow-hidden border border-white border-opacity-10 shadow-lg"
               >
                 <video
                   src={item.videoSrc}
                   loop
                   muted
-                  autoPlay={false} // Autoplay is now handled by ScrollTrigger
-                  playsInline // Recommended for mobile to play in place
-                  preload="metadata" // Optimized preloading
-                  poster={item.poster} // Added poster image
+                  playsInline
+                  preload="metadata"
+                  poster={item.poster}
                   className="w-full h-auto saturate-150"
-                />
+                  role="img"
+                  aria-label={`Video demonstration for step ${item.step}: ${item.title}`}
+                >
+                  <track
+                    kind="captions"
+                    src={`./${
+                      item.videoSrc.split("/").pop().split(".")[0]
+                    }.vtt`}
+                    srcLang="en"
+                    label="English captions"
+                    default
+                  />
+                  Your browser does not support the video tag.
+                </video>
               </div>
             </div>
           ))}

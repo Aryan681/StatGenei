@@ -7,29 +7,31 @@ import LooseStringCursor from "../compo/Home/LooseString";
 import LooseStringVariant from "../compo/Home/Loose2";
 import NewFooter from "../bais/Footer"; 
 import "./Home.css"
-const DataDashboardLanding = () => {
-  return (
-    <div className="min-h-screen bg-white text-white overflow-hidden">
-      {/* Section 1: Hero */}
-      <Hero />
 
-      <div className="smoky-gradient-div"></div>
+// Correctly receive all three refs as a single props object
+const DataDashboardLanding = ({ homeRef, featuresRef, footerRef }) => {
+  return (
+    <div className="min-h-screen bg-white text-white overflow-hidden">
+      {/* Section 1: Hero */}
+      <Hero ref={homeRef} />
 
-      {/* Section 2: Features */}
-      <Feature />
-      <LooseStringCursor />
+      <div className="smoky-gradient-div"></div>
 
-      {/* Section 3: Dashboard Preview */}
-      <Preview />
-      <LooseStringVariant />
+      {/* Section 2: Features */}
+      <Feature ref={featuresRef} /> 
+      <LooseStringCursor />
 
-      {/* Section 4: How It Works */}
-      <HowItWorks />
+      {/* Section 3: Dashboard Preview */}
+      <Preview />
+      <LooseStringVariant />
 
-      {/* Footer  */}
-      <NewFooter />
-    </div>
-  );
+      {/* Section 4: How It Works */}
+      <HowItWorks />
+
+      {/* Footer  */}
+      <NewFooter ref={footerRef} />
+    </div>
+  );
 };
 
 export default DataDashboardLanding;

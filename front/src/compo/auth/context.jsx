@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import axios from '../../utils/axios';
-import { supabase } from '../../compo/auth/supabaseClient';
+import { supabase } from './supabaseClient';
 
 const AuthContext = createContext(null);
 
@@ -9,20 +9,17 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Check for both token and Supabase session
     const token = localStorage.getItem('token');
     const checkAuth = async () => {
       try {
         const { data: { session } } = await supabase.auth.getSession();
         if (session?.user) {
-          // Handle Supabase user
           setUser({
             name: session.user.user_metadata?.full_name || session.user.email?.split('@')[0],
             email: session.user.email,
             id: session.user.id
           });
         } else if (token) {
-          // Handle regular token auth
           await fetchUserData();
         }
       } catch (error) {
@@ -34,7 +31,6 @@ export const AuthProvider = ({ children }) => {
 
     checkAuth();
 
-    // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
       if (event === 'SIGNED_IN' && session?.user) {
         setUser({
@@ -77,6 +73,34 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const supabaseLogin = async (email, password) => {
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (error) {
+        throw error;
+      }
+      
+      setUser({
+        name: data.user.user_metadata?.full_name || data.user.email?.split('@')[0],
+        email: data.user.email,
+        id: data.user.id
+      });
+
+      return { success: true };
+
+    } catch (error) {
+      console.error('Supabase login error:', error);
+      return {
+        success: false,
+        error: error.message || 'Supabase login failed'
+      };
+    }
+  };
+
   const register = async (name, email, password) => {
     try {
       const response = await axios.post('/auth/register', {
@@ -96,14 +120,77 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const supabaseRegister = async (name, email, password) => {
+    try {
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            full_name: name,
+          }
+        }
+      });
+      
+      if (error) {
+        throw error;
+      }
+
+      setUser({
+        name: data.user.user_metadata?.full_name || data.user.email?.split('@')[0],
+        email: data.user.email,
+        id: data.user.id
+      });
+
+      return { success: true };
+    } catch (error) {
+      console.error('Supabase register error:', error);
+      return {
+        success: false,
+        error: error.message || 'Supabase registration failed'
+      };
+    }
+  };
+
+  // UPDATED FUNCTION: add redirectTo option
+const sendPasswordResetEmail = async (email) => {
+  try {
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      // Explicitly set the redirect URL here
+      redirectTo: `${window.location.origin}/updatepassword`,
+    });
+    if (error) {
+      throw error;
+    }
+    return { success: true };
+  } catch (error) {
+    console.error('Password reset email error:', error);
+    return { success: false, error: error.message || 'Failed to send reset email' };
+  }
+};
+
+  const updatePassword = async (newPassword) => {
+    try {
+      const { error } = await supabase.auth.updateUser({
+        password: newPassword
+      });
+
+      if (error) {
+        throw error;
+      }
+      return { success: true };
+    } catch (error) {
+      console.error('Password update error:', error);
+      return { success: false, error: error.message || 'Failed to update password' };
+    }
+  };
+
   const logout = async () => {
     try {
-      // Check if it's a Supabase user
       const { data: { session } } = await supabase.auth.getSession();
       if (session) {
         await supabase.auth.signOut();
       } else {
-        // Regular token logout
         await axios.post('/auth/logout');
         localStorage.removeItem('token');
       }
@@ -115,7 +202,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, register, logout, loading }}>
+    <AuthContext.Provider value={{ user, login, supabaseLogin, register, supabaseRegister, logout, loading, sendPasswordResetEmail, updatePassword }}>
       {children}
     </AuthContext.Provider>
   );
@@ -127,4 +214,4 @@ export const useAuth = () => {
     throw new Error('useAuth must be used within an AuthProvider');
   }
   return context;
-}; 
+};

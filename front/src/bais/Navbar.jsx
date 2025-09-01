@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../compo/auth/context";
 import { gsap } from "gsap";
 
-const Navbar = ({ scrollToDashboard, scrollToFooter, scrollToHome }) => {
+const Navbar = ({ scrollToFeatures, scrollToFooter, scrollToHome }) => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -76,7 +76,7 @@ const Navbar = ({ scrollToDashboard, scrollToFooter, scrollToHome }) => {
           ${
             isScrolled
               ? "bg-black/90 backdrop-blur-md shadow-lg border border-white "
-              : "bg-white/90  backdrop-blur-sm"
+              : "bg-slate-50/90    backdrop-blur-sm  border-b-2 border-l-2  border-r-2"
           }
           rounded-2xl
           flex items-center justify-between h-16
@@ -122,15 +122,14 @@ const Navbar = ({ scrollToDashboard, scrollToFooter, scrollToHome }) => {
           </Link>
 
           <Link
-            to="/Dashboard"
-            onClick={scrollToDashboard}
+            onClick={scrollToFeatures}
             className={`relative px-3 py-2 font-medium transition duration-300 ease-in-out focus:outline-none group ${
               isScrolled
                 ? "text-white hover:text-purple-600"
                 : "text-black  hover:text-blue-600"
             }`}
           >
-            Dashboard
+            Features
             <span
               className={`absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-yellow-400 to-orange-400 transition-all duration-500 group-hover:w-full ${
                 isScrolled
@@ -140,12 +139,8 @@ const Navbar = ({ scrollToDashboard, scrollToFooter, scrollToHome }) => {
             ></span>
           </Link>
 
-          <a
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToFooter();
-            }}
-            href="#footer"
+          <Link
+            onClick={scrollToFooter}
             className={`relative px-3 py-2 font-medium transition duration-300 ease-in-out focus:outline-none group ${
               isScrolled
                 ? "text-white hover:text-purple-600"
@@ -160,7 +155,7 @@ const Navbar = ({ scrollToDashboard, scrollToFooter, scrollToHome }) => {
                   : "group-hover:shadow-lg group-hover:shadow-yellow-400/30"
               }`}
             ></span>
-          </a>
+          </Link>
 
           {user ? (
             <div
@@ -169,10 +164,10 @@ const Navbar = ({ scrollToDashboard, scrollToFooter, scrollToHome }) => {
               onMouseLeave={handleMouseLeave}
             >
               <div
-                className={`flex items-center space-x-2 transition-colors duration-200 font-medium cursor-pointer ${
+                className={`flex  text-2xl items-center space-x-2 transition-colors  duration-200 font-medium cursor-pointer ${
                   isScrolled
                     ? "text-white hover:text-purple-600"
-                    : "text-purple-100 hover:text-yellow-300"
+                    : "text-back hover:text-purple-600"
                 }`}
               >
                 <span>{user.name}</span>
@@ -264,21 +259,24 @@ const Navbar = ({ scrollToDashboard, scrollToFooter, scrollToHome }) => {
           >
             <ul className="flex flex-col space-y-3">
               <li>
-                <a
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToHome();
-                    setIsMenuOpen(false);
-                  }}
-                  href="#home"
-                  className={`block py-2 font-medium transition duration-300 ${
-                    isScrolled
-                      ? "text-gray-700 hover:text-purple-600"
-                      : "text-purple-100 hover:text-yellow-300"
-                  }`}
-                >
-                  Home
-                </a>
+              <Link
+            to="/"
+            onClick={scrollToHome}
+            className={`relative px-3 py-2 font-medium transition duration-300 ease-in-out focus:outline-none group ${
+              isScrolled
+                ? "text-white hover:text-purple-600"
+                : "text-black  hover:text-blue-600"
+            }`}
+          >
+            Home
+            <span
+              className={`absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-yellow-400 to-orange-400 transition-all duration-500 group-hover:w-full ${
+                isScrolled
+                  ? ""
+                  : "group-hover:shadow-lg group-hover:shadow-yellow-400/30"
+              }`}
+            ></span>
+          </Link>
               </li>
               <li>
                 <Link

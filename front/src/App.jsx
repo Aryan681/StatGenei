@@ -3,6 +3,7 @@ import {
   Routes,
   Route,
   Navigate,
+  useLocation // Import useLocation hook
 } from "react-router-dom";
 import { AuthProvider, useAuth } from "./compo/auth/context";
 import Navbar from "./bais/Navbar";
@@ -12,6 +13,7 @@ import Register from "./page/Signup";
 import Home from "./page/Home";
 import { supabase } from "./compo/auth/supabaseClient";
 import Dashboard from "./page/Dashboard";
+import UpdatePassword from "./page/UpdatePassword";
 
 // Protected Route component
 const ProtectedRoute = ({ children }) => {
@@ -19,20 +21,56 @@ const ProtectedRoute = ({ children }) => {
   return user ? children : <Navigate to="/login" />;
 };
 
-const AppRoutes = () => {
+const AppContent = () => {
+  const { user } = useAuth();
+  const location = useLocation(); // Get the current location object
   const homeRef = useRef(null);
   const featuresRef = useRef(null);
   const footerRef = useRef(null);
+
+  // Conditional rendering check for the Navbar
+  const showNavbar = location.pathname !== "/Dashboard";
+
+  return (
+    <>
+      {showNavbar && (
+        <Navbar
+          scrollToHome={homeRef.current?.scrollIntoView}
+          scrollToFeatures={featuresRef.current?.scrollIntoView}
+          scrollToFooter={footerRef.current?.scrollIntoView}
+          user={user}
+        />
+      )}
+      <main className="flex-grow">
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/Dashboard" element={<Dashboard />} />
+          <Route path="/updatepassword" element={<UpdatePassword />} />
+          <Route
+            path="/"
+            element={
+              <Home 
+                homeRef={homeRef} 
+                featuresRef={featuresRef} 
+                footerRef={footerRef} 
+              />
+            }
+          />
+        </Routes>
+      </main>
+    </>
+  );
+};
+
+const AppRoutes = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // Get initial user
     supabase.auth.getUser().then(({ data: { user } }) => {
       setUser(user);
-      // setLoading(false);
     });
 
-    // Listen for auth changes
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
@@ -42,51 +80,11 @@ const AppRoutes = () => {
     return () => subscription.unsubscribe();
   }, []);
 
-  const scrollToHome = () => {
-    homeRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const scrollToFeatures = () => {
-    featuresRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const scrollToFooter = () => {
-    footerRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  // if (loading) {
-  //   return (
-  //     <div className="flex flex-col items-center justify-center h-screen">
-  //       <Loader size="large" />
-  //       <h1 className="text-2xl font-medium text-gray-700 mt-4">Loading...</h1>
-  //     </div>
-  //   );
-  // }
-
- return (
+  return (
     <Router>
       <AuthProvider>
-        {/* Main container to hold all content vertically */}
         <div className="min-h-screen bg-gray-50 flex flex-col">
-          <Navbar
-            scrollToHome={scrollToHome}
-            scrollToFeatures={scrollToFeatures}
-            scrollToFooter={scrollToFooter}
-            user={user}
-          />
-          {/* Main content area */}
-          <main className="flex-grow">
-            <Routes>
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/Dashboard" element={<Dashboard/>} />
-              <Route
-                path="/"
-                element={<Home/>}
-              />
-            </Routes>
-          </main>
-        
+          <AppContent />
         </div>
       </AuthProvider>
     </Router>

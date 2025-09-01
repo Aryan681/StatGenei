@@ -1,43 +1,47 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, forwardRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
-import "./css/Feature.css"
+import "./css/Feature.css";
+
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
-const Feature = () => {
+const Feature = forwardRef((props, ref) => {
   const titleRef = useRef(null);
-  const card1Ref = useRef(null);
-  const card2Ref = useRef(null);
-  const card3Ref = useRef(null);
-  const card4Ref = useRef(null);
-  const title2Refs = useRef(null);
   const buttonRef = useRef(null);
-  const featureRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
-  const cardRefs = [card1Ref, card2Ref, card3Ref, card4Ref];
+  const featureRefs = useRef([]);
+  const cardRefs = useRef([]);
 
   const cardsData = [
     {
       image: "./data-management.png",
+      alt: "Icon representing data management and organization",
       shadowClass: "shadow-[-25px_-25px_50px_#aaaaaa,_25px_25px_50px_#ffffff]",
+      animation: { x: -150 },
     },
     {
       image: "./graph.png",
+      alt: "Icon of a financial or trend graph",
       shadowClass: "shadow-[25px_-25px_50px_#aaaaaa,_-25px_25px_50px_#ffffff]",
+      animation: { y: -150 },
     },
     {
       image: "./line-chart.png",
+      alt: "Icon of a line chart showing a rising trend",
       shadowClass: "shadow-[-25px_25px_50px_#aaaaaa,_25px_-25px_50px_#ffffff]",
+      animation: { y: 150 },
     },
     {
       image: "./statistics.png",
+      alt: "Icon representing statistics and data analysis",
       shadowClass: "shadow-[25px_25px_50px_#aaaaaa,_-25px_-25px_50px_#ffffff]",
+      animation: { x: 150 },
     },
   ];
 
   useEffect(() => {
-    // GSAP Context for cleanup
     const ctx = gsap.context(() => {
+      // Animate main title
       if (titleRef.current) {
         const mySplitText = new SplitText(titleRef.current, { type: "chars" });
         gsap.fromTo(
@@ -49,124 +53,87 @@ const Feature = () => {
             duration: 0.8,
             ease: "power3.out",
             stagger: 0.05,
-            reverseEase: "power2.in",
-            reverseDuration: 1,
             scrollTrigger: {
               trigger: titleRef.current,
               start: "top center+=150",
-              end: "bottom 10%",
               toggleActions: "play reverse play reverse",
             },
           }
         );
-        
       }
 
-      // Card Animations (entrance)
-      gsap.from(card1Ref.current, {
-        x: -150,
+      // Animate cards
+      const cleanups = [];
+      cardsData.forEach((card, i) => {
+        const cardElement = cardRefs.current[i];
+        if (cardElement) {
+          // Scroll animation
+          gsap.from(cardElement, {
+            ...card.animation,
+            opacity: 0,
+            duration: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: cardElement,
+              start: "top 85%",
+              toggleActions: "play reverse play reverse",
+              // markers:true
+            },
+          });
+
+          // Hover animation
+          const allCards = cardRefs.current;
+          const otherCards = allCards.filter((_, j) => j !== i);
+
+          const onMouseEnter = () => {
+            gsap.to(cardElement, { scale: 1.1, duration: 0.3, ease: "power2.out" });
+            gsap.to(otherCards, { scale: 0.9, duration: 0.3, ease: "power2.out" });
+          };
+          const onMouseLeave = () => {
+            gsap.to(allCards, { scale: 1, duration: 0.3, ease: "power2.out" });
+          };
+
+          cardElement.addEventListener("mouseenter", onMouseEnter);
+          cardElement.addEventListener("mouseleave", onMouseLeave);
+
+          cleanups.push(() => {
+            cardElement.removeEventListener("mouseenter", onMouseEnter);
+            cardElement.removeEventListener("mouseleave", onMouseLeave);
+          });
+        }
+      });
+
+      // Animate feature text items
+      gsap.from(featureRefs.current, {
+        x: 200,
         opacity: 0,
         duration: 1,
+        stagger: 0.3,
         ease: "power2.out",
         scrollTrigger: {
-          trigger: card1Ref.current,
+          trigger: featureRefs.current[0],
           start: "top 80%",
           toggleActions: "play reverse play reverse",
         },
       });
 
-      gsap.from(card2Ref.current, {
-        y: -150,
-        opacity: 0,
-        duration: 1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: card2Ref.current,
-          start: "top 70%",
-          toggleActions: "play reverse play reverse",
-        },
-      });
-
-      gsap.from(card3Ref.current, {
-        y: 150,
-        opacity: 0,
-        duration: 1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: card3Ref.current,
-          start: "top 90%",
-          toggleActions: "play reverse play reverse",
-        },
-      });
-
-      gsap.from(card4Ref.current, {
-        x: 150,
-        opacity: 0,
-        duration: 1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: card4Ref.current,
-          start: "top 90%",
-          toggleActions: "play reverse play reverse",
-        },
-      });
-
-      gsap.from(
-        featureRefs.map((ref) => ref.current),
-        {
-          x: 200,
+      // Animate button
+      if (buttonRef.current) {
+        gsap.from(buttonRef.current, {
+          y: 100,
           opacity: 0,
-          duration: 1,
-          stagger: 0.3,
+          duration: 0.3,
           ease: "power2.out",
           scrollTrigger: {
-            trigger: featureRefs[0].current,
-            start: "top 80%",
+            trigger: buttonRef.current,
+            start: "bottom-=60 bottom-=50",
+            end: "top center",
             toggleActions: "play reverse play reverse",
           },
-        }
-      );
-
-      gsap.from(buttonRef.current, {
-        y: 100,
-        opacity: 0,
-        duration: 0.3,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: buttonRef.current,
-          start: "bottom-=60 bottom-=50",
-          end: "top center",
-          toggleActions: "play reverse play reverse",
-        },
-      });
-
-      // 🔥 Hover scaling logic
-      cardRefs.forEach((cardRef, i) => {
-        const card = cardRef.current;
-
-        card.addEventListener("mouseenter", () => {
-          gsap.to(card, { scale: 1.1, duration: 0.3, ease: "power2.out" });
-          cardRefs.forEach((otherRef, j) => {
-            if (j !== i) {
-              gsap.to(otherRef.current, {
-                scale: 0.9,
-                duration: 0.3,
-                ease: "power2.out",
-              });
-            }
-          });
         });
+      }
 
-        card.addEventListener("mouseleave", () => {
-          cardRefs.forEach((ref) => {
-            gsap.to(ref.current, {
-              scale: 1,
-              duration: 0.3,
-              ease: "power2.out",
-            });
-          });
-        });
-      });
+      return () => cleanups.forEach((fn) => fn());
     });
 
     return () => ctx.revert();
@@ -174,6 +141,7 @@ const Feature = () => {
 
   return (
     <section
+      ref={ref}
       id="features"
       className="min-h-screen m-3 flex flex-col justify-start px-4 sm:px-6 lg:px-12 py-12 sm:py-16 text-black"
     >
@@ -190,67 +158,40 @@ const Feature = () => {
           {cardsData.map((card, i) => (
             <div
               key={i}
-              ref={cardRefs[i]}
+              ref={(el) => (cardRefs.current[i] = el)}
               className={`aspect-square max-h-[30vh] rounded-xl flex items-center justify-center p-2 sm:p-4 ${card.shadowClass}`}
             >
               <img
                 src={card.image}
-                alt={`Feature ${i + 1}`}
+                alt={card.alt}
                 className="w-full max-h-[20vh] object-contain"
+                loading="lazy"
               />
             </div>
           ))}
         </div>
 
-        {/* Right: Text */}
-        <div className="flex flex-col  mt-10 lg:mt-0 lg:ml-12 xl:ml-24">
-          <p
-            className="text-xl  sm:text-2xl md:text-3xl font-bold mb-6"
-            ref={title2Refs}
-          >
+        {/* Right: Feature Text */}
+        <div className="flex flex-col mt-10 lg:mt-0 lg:ml-12 xl:ml-24">
+          <p className="text-xl sm:text-2xl md:text-3xl font-bold mb-6">
             AI-Powered Data Analysis
           </p>
-
           <div className="space-y-6">
-            <div ref={featureRefs[0]}>
-              <h3 className="text-lg sm:text-xl font-bold mb-1">
-                KPI Generation
-              </h3>
-              <p className="text-base sm:text-lg text-gray-600">
-                Automatically calculates and formats key metrics like sums,
-                averages, and min/max values from your data.
-              </p>
-            </div>
-
-            <div ref={featureRefs[1]}>
-              <h3 className="text-lg sm:text-xl font-bold mb-1">
-                Dynamic Visualizations
-              </h3>
-              <p className="text-base sm:text-lg text-gray-600">
-                Creates a wide variety of relevant charts, from bar and pie
-                charts to line graphs and correlation heatmaps.
-              </p>
-            </div>
-
-            <div ref={featureRefs[2]}>
-              <h3 className="text-lg sm:text-xl font-bold mb-1">
-                Comprehensive Summaries
-              </h3>
-              <p className="text-base sm:text-lg text-gray-600">
-                Provides detailed summaries of numeric and categorical data,
-                including missing values and unique counts.
-              </p>
-            </div>
-
-            <div ref={featureRefs[3]}>
-              <h3 className="text-lg sm:text-xl font-bold mb-1">
-                Intelligent Data Storytelling
-              </h3>
-              <p className="text-base sm:text-lg text-gray-600">
-                Generates a concise, business-friendly narrative that highlights
-                key findings and cleaning report details.
-              </p>
-            </div>
+            {["KPI Generation", "Dynamic Visualizations", "Comprehensive Summaries", "Intelligent Data Storytelling"].map(
+              (title, i) => (
+                <div key={i} ref={(el) => (featureRefs.current[i] = el)}>
+                  <h3 className="text-lg sm:text-xl font-bold mb-1">{title}</h3>
+                  <p className="text-base sm:text-lg text-gray-600">
+                    {[
+                      "Automatically calculates and formats key metrics like sums, averages, and min/max values from your data.",
+                      "Creates a wide variety of relevant charts, from bar and pie charts to line graphs and correlation heatmaps.",
+                      "Provides detailed summaries of numeric and categorical data, including missing values and unique counts.",
+                      "Generates a concise, business-friendly narrative that highlights key findings and cleaning report details.",
+                    ][i]}
+                  </p>
+                </div>
+              )
+            )}
           </div>
 
           <button
@@ -263,6 +204,6 @@ const Feature = () => {
       </div>
     </section>
   );
-};
+});
 
 export default Feature;

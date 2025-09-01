@@ -1,90 +1,121 @@
-import React from "react";
-import { VscGraph } from "react-icons/vsc";
+import React, { useEffect, useRef } from "react";
+import {
+  VscTable,
+  VscSymbolNamespace,
+  VscLayers,
+  VscGraph,
+  VscTypeHierarchy,
+  VscRocket,
+  VscFlame,
+  VscPulse,
+  VscServer,
+} from "react-icons/vsc";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const KpiCards = ({ kpis, theme = "default" }) => {
+import "./kpi.css";
+gsap.registerPlugin(ScrollTrigger);
+
+const KpiCards = ({ kpis }) => {
+  const cardsRef = useRef([]);
+  cardsRef.current = [];
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      if (cardsRef.current.length > 0) {
+        // Set initial state without transition to prevent glitching
+        gsap.set(cardsRef.current, { y: 50, opacity: 0 });
+
+        gsap.fromTo(
+          cardsRef.current,
+          { y: 50, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.5,
+            stagger: kpis.length > 1 ? 0.1 : 0,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: cardsRef.current[0],
+              start: "center bottom",
+              end: " top   top",
+              toggleActions: "play reverse play reverse",
+              // markers:true
+            },
+          }
+        );
+      }
+    });
+    return () => ctx.revert();
+  }, [kpis]);
+
   if (!kpis || kpis.length === 0) return null;
 
-  // Genie-themed color variations for different cards
-  const genieColors = [
-    "from-yellow-300 to-orange-300", // Gold
-    "from-purple-500 to-indigo-600", // Purple
-    "from-teal-400 to-blue-500",     // Blue
-    "from-pink-500 to-red-500",      // Red
-    "from-green-400 to-emerald-500", // Green
-    "from-amber-400 to-orange-500",  // Amber
+  const kpiIcons = [
+    VscTable,
+    VscSymbolNamespace,
+    VscLayers,
+    VscGraph,
+    VscTypeHierarchy,
+    VscRocket,
+    VscFlame,
+    VscPulse,
+    VscServer,
   ];
 
+  const addToRefs = (el) => {
+    if (el && !cardsRef.current.includes(el)) {
+      cardsRef.current.push(el);
+    }
+  };
+
   return (
-    <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-white mb-4 text-center ">
-        <span className="animate-pulse">✨</span> Magical Insights <span className="animate-pulse">✨</span>
-      </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {kpis.map((kpi, index) => {
-          const colorIndex = index % genieColors.length;
-          const isGenieTheme = theme === "genie";
-          
-          return (
-            <div
-              key={index}
-              className={`p-6 rounded-2xl shadow-2xl border transition-all duration-500 overflow-hidden 
-              hover:scale-[1.03] hover:shadow-xl relative
-              ${isGenieTheme 
-                ? `bg-gradient-to-br ${genieColors[colorIndex]} border-transparent text-white` 
-                : "bg-white border-gray-100 text-gray-800"
-              }
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {kpis.map((kpi, index) => {
+        const Icon = kpiIcons[index % kpiIcons.length];
+
+        return (
+          <div
+            key={index}
+            ref={addToRefs}
+            className={`p-6 rounded-2xl shadow-md bg-gradient-to-br from-[#2d2e31] to-[#262626]
+              hover:border-purple-400 hover:scale-[1.03]
+              group relative overflow-hidden border border-transparent 
               ${index === kpis.length - 1 ? "sm:col-span-2" : ""}`}
-              style={{
-                boxShadow: isGenieTheme 
-                  ? `0 10px 30px rgba(255, 215, 0, 0.3), 0 0 20px rgba(255, 140, 0, 0.2)` 
-                  : undefined
-              }}
-            >
-              {/* Magic sparkle effect */}
-              {isGenieTheme && (
-                <>
-                  <div className="absolute top-2 right-2 w-3 h-3 bg-yellow-300 rounded-full animate-pulse opacity-70"></div>
-                  <div className="absolute bottom-2 left-2 w-2 h-2 bg-white rounded-full animate-pulse opacity-50"></div>
-                </>
-              )}
-              
-              <div className="flex items-center justify-between mb-3">
-                <span className={`text-sm font-semibold uppercase tracking-wide
-                  ${isGenieTheme ? "text-yellow-100" : "text-gray-500"}`}>
-                  {kpi.name}
-                </span>
-                <div className={`text-xl ${isGenieTheme ? "text-yellow-200" : "text-blue-500"}`}>
-                  <VscGraph />
-                </div>
-              </div>
-              
-              <span className={`text-4xl font-extrabold block mb-2
-                ${isGenieTheme ? "text-white drop-shadow-md" : "text-gray-800"}`}>
-                {kpi.value}
+          >
+            <div className="flex items-center justify-between mb-3">
+              <span className="text-sm font-semibold uppercase tracking-wide text-gray-500">
+                {kpi.name}
               </span>
-              
-              {/* Decorative element */}
-              {isGenieTheme && (
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-yellow-300 to-transparent opacity-60"></div>
-              )}
-              
-              {/* Hover effect enhancement */}
-              <div className={`absolute inset-0 rounded-2xl opacity-0 hover:opacity-20 transition-opacity duration-300
-                ${isGenieTheme ? "bg-yellow-300" : "bg-blue-100"}`}></div>
+              <div className="text-3xl text-purple-400 group-hover:text-white transition-colors duration-300">
+                <Icon />
+              </div>
             </div>
-          );
-        })}
-      </div>
-      
-      {/* Magical divider */}
-      {theme === "genie" && (
-        <div className="relative h-4 flex items-center justify-center">
-          <div className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-yellow-400 to-transparent"></div>
-          <div className="relative bg-purple-900 px-4 text-yellow-300 text-sm font-semibold">
-            ✦ Magical Insights ✦
+
+            <span
+              className={`text-4xl font-extrabold block mb-2 oxanium text-white transition-colors duration-300
+              group-hover:text-purple-400`}
+            >
+              {typeof kpi.value === "number"
+                ? Number.isInteger(kpi.value)
+                  ? kpi.value
+                  : Math.ceil(kpi.value)
+                : kpi.value}
+            </span>
+
+            <div className="flex items-center text-sm font-semibold">
+              <span
+                className={`mr-1 ${
+                  kpi.trend === "up" ? "text-green-500" : "text-red-500"
+                }`}
+              >
+                {kpi.change}
+              </span>
+              <span className="text-gray-500">{kpi.timeframe}</span>
+            </div>
           </div>
-        </div>
-      )}
+        );
+      })}
     </div>
   );
 };
