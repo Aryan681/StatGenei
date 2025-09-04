@@ -1,4 +1,3 @@
-// src/pages/Dashboard.js
 import React, { useState, useEffect } from "react";
 import { setStoredData, getStoredData } from "../compo/dashboard/utils/Storage";
 import {
@@ -11,11 +10,11 @@ import KpiCards from "../compo/dashboard/Kpicard";
 import Charts from "../compo/dashboard/Charts";
 import DataStory from "../compo/dashboard/DataStory";
 import DataSummary from "../compo/dashboard/DataSummary";
-import Sidebar from "../bais/Siderbar";
+import Sidebar from "../bais/Siderbar.jsx"; 
 import { FaDownload } from "react-icons/fa";
 import { HiOutlineAdjustmentsHorizontal, HiOutlineArrowUpTray } from "react-icons/hi2";
 import Toast from "../compo/dashboard/Toaster";
-import Loader from "../bais/Loader";
+import Loader from "../bais/Loader.jsx";
 import FilterModal from "../compo/dashboard/FilterSlicer";
 import "./dash.css"
 const Dashboard = () => {
