@@ -1,9 +1,9 @@
 import axios from "axios";
 import { safeJsonResponse } from "../middleware/jsonEnco.js";
 import dotenv from "dotenv";
-dotenv.config();
+dotenv.config(); 
 
-const remoteFilterUrl = process.env.Filter_URL;
+const remoteFilterUrl = process.env.FILTER_URL;
 
 export const filterData = async (req, res) => {
   const { job_id, filters } = req.body;
