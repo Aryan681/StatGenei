@@ -29,12 +29,11 @@ const Sidebar = ({ isCollapsed, onToggle }) => {
   const navLinks = [
     { to: '/', label: 'Home', icon: <VscHome /> },
     { to: '/dashboard', label: 'Dashboard', icon: <VscDashboard /> },
-    { to: '/settings', label: 'Settings', icon: <VscSettingsGear /> },
   ];
 
   return (
     <div
-      className={`fixed h-full bg-[#262626d6] p-6 flex flex-col justify-between z-50 shadow-lg border-r border-[#3a3a3a] transition-all duration-300 ease-in-out ${
+      className={`fixed  h-full bg-[#262626d6] p-6 flex flex-col justify-between z-50 shadow-lg border-r border-[#3a3a3a] transition-all duration-300 ease-in-out ${
         isCollapsed ? 'w-20' : 'w-64'
       }`}
     >
@@ -62,13 +61,29 @@ const Sidebar = ({ isCollapsed, onToggle }) => {
         </div>
 
         {/* User Name Display */}
-        {user && !isCollapsed && (
-          <div className="mb-8">
-            <p className="text-4xl font-semibold text-purple-500">
-               {user.name}
-            </p>
-          </div>
-        )}
+     <div className="mb-8">
+          {user ? (
+            <div className="flex items-center space-x-3 text-white">
+              <VscAccount className="h-10 w-10 p-1 border border-purple-500 rounded-full" />
+              {!isCollapsed && (
+                <div className="flex flex-col">
+                  <span className="font-semibold text-lg text-white whitespace-nowrap">
+                    {user.name || "User"}
+                  </span>
+                  <span className="text-sm text-gray-400">
+                    {user.email}
+                  </span>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className={`flex items-center space-x-2 text-white ${isCollapsed ? 'justify-center' : 'justify-start'}`}>
+              <VscAccount className="h-8 w-8 text-gray-400" />
+              {!isCollapsed && <span className="text-gray-400">Guest User</span>}
+            </div>
+          )}
+        </div>
+
 
         {/* Navigation Links */}
         <nav className="space-y-2">
@@ -91,7 +106,7 @@ const Sidebar = ({ isCollapsed, onToggle }) => {
       </div>
 
       {/* User Actions */}
-      <div className="space-y-2">
+    <div className="space-y-2 border-t border-[#3a3a3a] pt-4">
         {user ? (
           <>
             <a

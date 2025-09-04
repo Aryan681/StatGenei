@@ -3,7 +3,7 @@ import {
   Routes,
   Route,
   Navigate,
-  useLocation // Import useLocation hook
+  useLocation
 } from "react-router-dom";
 import { AuthProvider, useAuth } from "./compo/auth/context";
 import Navbar from "./bais/Navbar";
@@ -23,21 +23,20 @@ const ProtectedRoute = ({ children }) => {
 
 const AppContent = () => {
   const { user } = useAuth();
-  const location = useLocation(); // Get the current location object
+  const location = useLocation();
   const homeRef = useRef(null);
   const featuresRef = useRef(null);
   const footerRef = useRef(null);
 
-  // Conditional rendering check for the Navbar
   const showNavbar = location.pathname !== "/Dashboard";
 
   return (
     <>
       {showNavbar && (
         <Navbar
-          scrollToHome={homeRef.current?.scrollIntoView}
-          scrollToFeatures={featuresRef.current?.scrollIntoView}
-          scrollToFooter={footerRef.current?.scrollIntoView}
+          homeRef={homeRef}     
+          featuresRef={featuresRef} 
+          footerRef={footerRef}   
           user={user}
         />
       )}
@@ -50,10 +49,10 @@ const AppContent = () => {
           <Route
             path="/"
             element={
-              <Home 
-                homeRef={homeRef} 
-                featuresRef={featuresRef} 
-                footerRef={footerRef} 
+              <Home
+                homeRef={homeRef}
+                featuresRef={featuresRef}
+                footerRef={footerRef}
               />
             }
           />

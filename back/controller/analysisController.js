@@ -3,15 +3,10 @@ import axios from "axios";
 import FormData from "form-data";
 import { safeJsonResponse } from "../middleware/jsonEnco.js";
 import { getCache, setCache } from "../middleware/Redis.js";
-import {
-  createAndStoreDataModel,
-  getFilteredData,
-  getDataModelAndTableName,
-} from "../middleware/analysisStore.js";
 import { parseCsvFile } from "../utils/csvParser.js";
-
-const remoteUrl =
-  "https://statgenie-163827097277.asia-south1.run.app/clean_and_analyze";
+import dotenv from "dotenv";
+dotenv.config();
+const remoteUrl = process.env.MODLE_URL;
 
 export const uploadPage = (req, res) => {
   res.send(`
@@ -86,10 +81,6 @@ export const uploadFile = async (req, res) => {
     });
 
     const analysisData = response.data;
-
-    const dataId = await createAndStoreDataModel(flatData);
-
-    analysisData.dataId = dataId;
     await setCache(cacheKey, analysisData, 3600);
 
     try {
@@ -113,39 +104,5 @@ export const uploadFile = async (req, res) => {
         error: "Failed to connect to the remote service",
       };
     return safeJsonResponse(res, errorData, errorStatus);
-  }
-};
-
-export const filterData = async (req, res) => {
-  const { dataId, filters } = req.body;
-
-  if (!dataId || !filters) {
-    return safeJsonResponse(
-      res,
-      { error: "Missing required parameters: dataId and filters" },
-      400
-    );
-  }
-
-  try {
-    const { flatData } = await getDataModelAndTableName(dataId);
-
-    console.log("🔍 filterData received:", { dataId, filters });
-    console.log("FlatData length:", flatData?.length);
-
-    if (!flatData) {
-      return safeJsonResponse(
-        res,
-        { error: "Data model not found or has expired" },
-        404
-      );
-    }
-
-    const filteredResults = await getFilteredData(flatData, filters);
-
-    return safeJsonResponse(res, { data: filteredResults }, 200);
-  } catch (err) {
-    console.error("Filtering API call failed:", err.message);
-    return safeJsonResponse(res, { error: "Failed to filter data" }, 500);
   }
 };

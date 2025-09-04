@@ -38,8 +38,7 @@ const KpiCards = ({ kpis }) => {
             scrollTrigger: {
               trigger: cardsRef.current[0],
               start: "center bottom",
-              end: " top   top",
-              toggleActions: "play reverse play reverse",
+              toggleActions: "play none none none",
               // markers:true
             },
           }

@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Plot from "react-plotly.js";
 import { VscGraph, VscInfo } from "react-icons/vsc";
 import { FaFilter } from "react-icons/fa";
 import { getFilteredData } from "./utils/Api";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger);
 const colorPalette = [
   "#8A2BE2",
   "#6A5ACD",
@@ -41,7 +44,40 @@ const Charts = ({ charts: initialCharts, slicers, dataId }) => {
   const [filteredCharts, setFilteredCharts] = useState(initialCharts);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+ const cardsRef = useRef([]);
+  cardsRef.current = [];
 
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      if (cardsRef.current.length > 0) {
+        // Set initial state without transition to prevent glitching
+        gsap.set(cardsRef.current, { y: 50, opacity: 0 });
+
+        gsap.fromTo(
+          cardsRef.current,
+          { y: 50, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.5,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: cardsRef.current[0],
+              start: "center-=15% bottom",
+              toggleActions: "play none none none",
+              // markers:true
+            },
+          }
+        );
+      }
+    });
+    return () => ctx.revert();
+  }, []);
+    const addToRefs = (el) => {
+    if (el && !cardsRef.current.includes(el)) {
+      cardsRef.current.push(el);
+    }
+  };
   useEffect(() => {
     if (slicers) {
       const initSlicers = {};
@@ -148,6 +184,7 @@ const Charts = ({ charts: initialCharts, slicers, dataId }) => {
 
             return (
               <div
+              ref={addToRefs}
                 key={key}
                 className="bg-gradient-to-br from-[#2d2e31] to-[#262626] p-6 rounded-2xl shadow-lg border border-[#3E4044]"
               >

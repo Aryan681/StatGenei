@@ -1,7 +1,9 @@
 import Redis from "ioredis";
+import dotenv from "dotenv";
+dotenv.config();
 
 // Replace with your actual Redis URL
-const redisUrl = "redis://default:rwEnJpVAlAxTXIFzO5U0ynP4wWLlOlYY@redis-15287.crce206.ap-south-1-1.ec2.redns.redis-cloud.com:15287";
+const redisUrl = process.env.REDIS_URL;
 
 const redisClient = new Redis(redisUrl);
 
@@ -30,6 +32,25 @@ export const setCache = async (key, data, expiresInSeconds = 3600) => {
     await redisClient.set(key, serializedData, "EX", expiresInSeconds);
   } catch (error) {
     console.error("Redis SET error:", error);
+  }
+};
+
+// New rate-limiting function
+export const rateLimit = async (key, limit, windowInSeconds) => {
+  try {
+    // INCR increments the key's value. If the key doesn't exist, it's created and set to 1.
+    const currentCount = await redisClient.incr(key);
+
+    // If this is the first request in the window, set an expiration time for the key.
+    if (currentCount === 1) {
+      await redisClient.expire(key, windowInSeconds);
+    }
+
+    // Return true if the request is within the limit, otherwise return false.
+    return currentCount <= limit;
+  } catch (error) {
+    console.error("Redis rate-limit error:", error);
+    return false; // Fail safe: assume rate-limited to prevent excessive requests if Redis is down.
   }
 };
 

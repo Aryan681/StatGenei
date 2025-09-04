@@ -1,6 +1,3 @@
- State ,District,Population,Avg_Income,Survey Date
-Bihar,Patna,58400,52000,2024-01-15
-Bihar,Gaya,42300,51000,2024/02/15
-Kerala,Ernakulam,69100,88000,15-03-2024
-Kerala,Kollam,35500,87000,
-,Patna,58400,5200000,2024-01-15
+version https://git-lfs.github.com/spec/v1
+oid sha256:cd766775aba9f3163c9d8def890e5a1a352ade140327a491ee88d12c586be321
+size 219

@@ -20,7 +20,7 @@ const HowItWorks = () => {
         "Drag and drop your CSV, Excel, or JSON file. Our system automatically detects the structure and content.",
       direction: "left",
       videoSrc: "./drag.webm",
-      poster: "./drag_poster.jpg",
+      poster: "./upload.png",
     },
     {
       step: "02",
@@ -29,7 +29,7 @@ const HowItWorks = () => {
         "Our AI engine identifies key metrics, relationships, and patterns worth highlighting.",
       direction: "right",
       videoSrc: "./loading.webm",
-      poster: "./loading_poster.jpg",
+      poster: "./loading.png",
     },
     {
       step: "03",
@@ -38,7 +38,7 @@ const HowItWorks = () => {
         "We create a complete dashboard with visualizations, KPIs, and a data story tailored to your dataset.",
       direction: "left",
       videoSrc: "./dashh.webm",
-      poster: "./dashh_poster.jpg",
+      poster: "./dashh.png",
     },
     {
       step: "04",
@@ -46,8 +46,8 @@ const HowItWorks = () => {
       description:
         "Interact with your dashboard, customize it, and share insights with your team or clients.",
       direction: "right",
-      videoSrc: "./video_share.mp4",
-      poster: "./share_poster.jpg",
+      videoSrc: "./slicer.webm",
+      poster: "./filter.png",
     },
   ];
 
@@ -55,7 +55,6 @@ const HowItWorks = () => {
     const ctx = gsap.context(() => {
       // Title Animation using SplitText
       if (titleRef.current) {
-        // Split into words for entrance
         const splitWords = new SplitText(titleRef.current, { type: "words" });
         const midIndex = Math.ceil(splitWords.words.length / 2);
 
@@ -95,21 +94,20 @@ const HowItWorks = () => {
           }
         );
 
-        // Now split into chars for hover
+        // Hover effect for title characters
         const splitChars = new SplitText(titleRef.current, { type: "chars" });
-
         splitChars.chars.forEach((char) => {
           char.style.transition = "color 0.3s ease";
           char.addEventListener("mouseenter", () => {
             char.style.color = "white";
           });
           char.addEventListener("mouseleave", () => {
-            char.style.color = ""; // reset to inherited
+            char.style.color = "";
           });
         });
       }
 
-      // Animate steps and videos
+      // Animate steps and videos on scroll
       stepsData.forEach((item, index) => {
         const stepEl = stepRefs.current[index];
         const videoEl = videoRefs.current[index];
@@ -132,7 +130,7 @@ const HowItWorks = () => {
             }
           );
 
-          // Animate video and control playback
+          // Animate video
           gsap.fromTo(
             videoEl,
             { opacity: 0, scale: 0.8 },
@@ -145,22 +143,29 @@ const HowItWorks = () => {
                 trigger: videoEl,
                 start: "top 80%",
                 toggleActions: "play none none reverse",
-                onEnter: () => videoEl.querySelector("video")?.play(),
-                onLeave: () => videoEl.querySelector("video")?.pause(),
-                onEnterBack: () => videoEl.querySelector("video")?.play(),
-                onLeaveBack: () => videoEl.querySelector("video")?.pause(),
               },
             }
           );
-
-          // Optional hover effect for video
-          gsap.to(videoEl, { scale: 1.05, paused: true, duration: 0.5 });
         }
       });
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
+
+  // New function to handle video playback on hover
+  const handleVideoHover = (videoElement) => {
+    if (videoElement) {
+      videoElement.play();
+    }
+  };
+
+  const handleVideoLeave = (videoElement) => {
+    if (videoElement) {
+      videoElement.pause();
+      videoElement.currentTime = 0; // Reset to the beginning
+    }
+  };
 
   return (
     <section
@@ -179,9 +184,7 @@ const HowItWorks = () => {
             <div
               key={index}
               className={`flex flex-col ${
-                item.direction === "right"
-                  ? "md:flex-row-reverse"
-                  : "md:flex-row"
+                item.direction === "right" ? "md:flex-row-reverse" : "md:flex-row"
               } items-center gap-18`}
             >
               <div
@@ -197,6 +200,8 @@ const HowItWorks = () => {
               <div
                 ref={(el) => (videoRefs.current[index] = el)}
                 className="flex-1 rounded-xl overflow-hidden border border-white border-opacity-10 shadow-lg"
+                onMouseEnter={() => handleVideoHover(videoRefs.current[index].querySelector("video"))}
+                onMouseLeave={() => handleVideoLeave(videoRefs.current[index].querySelector("video"))}
               >
                 <video
                   src={item.videoSrc}

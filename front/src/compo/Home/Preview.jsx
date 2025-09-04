@@ -12,34 +12,53 @@ const Preview = () => {
   const titleRef = useRef(null);
   const underlineRef = useRef(null);
   const cardRefs = useRef([]);
-
+  const screenContentRef = useRef(null);
+  const scrollIndicatorRef = useRef(null);
   const cardsData = [
     {
       title: "KPI Generation",
       summary: "See your most important metrics at a glance.",
-      description: "Automatically generates key performance indicators (KPIs) from your data, like total sales or average customer value.",
-      animation: { from: { x: -150, opacity: 0 }, to: { x: 0, opacity: 1, duration: 0.3, ease: "power3.out" } },
+      description:
+        "Automatically generates key performance indicators (KPIs) from your data, like total sales or average customer value.",
+      animation: {
+        from: { x: -150, opacity: 0 },
+        to: { x: 0, opacity: 1, duration: 0.3, ease: "power3.out" },
+      },
       start: "top center+=150",
     },
     {
       title: "Dynamic Visualizations",
       summary: "Explore your data with interactive charts.",
-      description: "Your dashboard is populated with interactive charts, from bar graphs to scatter plots.",
-      animation: { from: { y: -150, opacity: 0 }, to: { y: 0, opacity: 1, duration: 0.3, ease: "power2.out" } },
-      start: window.matchMedia("(min-width: 768px)").matches ? "top center+=150" : "top center+=190",
+      description:
+        "Your dashboard is populated with interactive charts, from bar graphs to scatter plots.",
+      animation: {
+        from: { y: -150, opacity: 0 },
+        to: { y: 0, opacity: 1, duration: 0.3, ease: "power2.out" },
+      },
+      start: window.matchMedia("(min-width: 768px)").matches
+        ? "top center+=150"
+        : "top center+=190",
     },
     {
       title: "Comprehensive Data Summary",
       summary: "Get a complete overview of your dataset.",
-      description: "Understand your data on a deeper level with insights into trends, missing values, and distributions.",
-      animation: { from: { y: 150, opacity: 0 }, to: { y: 0, opacity: 1, duration: 0.3, ease: "power2.out" } },
+      description:
+        "Understand your data on a deeper level with insights into trends, missing values, and distributions.",
+      animation: {
+        from: { y: 150, opacity: 0 },
+        to: { y: 0, opacity: 1, duration: 0.3, ease: "power2.out" },
+      },
       start: "top center+=350",
     },
     {
       title: "AI-Powered Data Story",
       summary: "A narrative that explains your numbers.",
-      description: "Generates a clear, business-friendly story that explains your data insights.",
-      animation: { from: { x: 150, opacity: 0 }, to: { x: 0, opacity: 1, duration: 0.3, ease: "power2.out" } },
+      description:
+        "Generates a clear, business-friendly story that explains your data insights.",
+      animation: {
+        from: { x: 150, opacity: 0 },
+        to: { x: 0, opacity: 1, duration: 0.3, ease: "power2.out" },
+      },
       start: "top center+=350",
     },
   ];
@@ -102,18 +121,14 @@ const Preview = () => {
       // Cards Animation
       cardsData.forEach((card, i) => {
         if (cardRefs.current[i]) {
-          gsap.fromTo(
-            cardRefs.current[i],
-            card.animation.from,
-            {
-              ...card.animation.to,
-              scrollTrigger: {
-                trigger: cardRefs.current[i],
-                start: card.start,
-                toggleActions: "play reverse play reverse",
-              },
-            }
-          );
+          gsap.fromTo(cardRefs.current[i], card.animation.from, {
+            ...card.animation.to,
+            scrollTrigger: {
+              trigger: cardRefs.current[i],
+              start: card.start,
+              toggleActions: "play reverse play reverse",
+            },
+          });
         }
       });
     });
@@ -121,19 +136,69 @@ const Preview = () => {
     return () => ctx.revert();
   }, []);
 
+  useEffect(() => {
+    const screenEl = screenContentRef.current;
+    const indicatorEl = scrollIndicatorRef.current;
+    if (screenEl) {
+      const handleInnerScroll = () => {
+        if (screenEl.scrollTop > 10) {
+          gsap.to(indicatorEl, { opacity: 0, duration: 0.5 });
+        } else {
+          gsap.to(indicatorEl, { opacity: 1, duration: 0.5 });
+        }
+      };
+
+      screenEl.addEventListener("scroll", handleInnerScroll);
+
+      return () => {
+        screenEl.removeEventListener("scroll", handleInnerScroll);
+      };
+    }
+  }, []);
+
   return (
-    <section id="dashboard" className="min-h-screen flex flex-col justify-center px-8 py-10 text-black">
+    <section
+      id="dashboard"
+      className="min-h-screen flex flex-col justify-center px-8 py-10 text-black"
+    >
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Left Column */}
         <LeftArc />
-        <div ref={laptopRef} className="relative lg:left-[-10rem] w-full aspect-video">
+        <div
+          ref={laptopRef}
+          className="relative lg:left-[-10rem] w-full aspect-video"
+        >
           <img
             src="./pngwing.com.png"
             alt="Laptop frame illustration"
             className="w-full h-auto"
             loading="lazy"
           />
-          <div className="absolute top-[5%] left-[12%] w-[76%] h-[80%] overflow-y-scroll hide-scrollbar">
+          <div
+            ref={screenContentRef}
+            className="absolute top-[5%] left-[12%] w-[76%] h-[80%] overflow-y-scroll hide-scrollbar"
+          >
+            {/* Scroll Indicator */}
+            <div
+              ref={scrollIndicatorRef}
+              className="absolute inset-x-0 top-65 flex justify-center z-10 pointer-events-none"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-10 h-10 text-white animate-bounce"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5"
+                />
+              </svg>
+            </div>
+
             <img
               src="./dashh-scroll.png"
               alt="Dashboard scroll preview"
@@ -145,7 +210,10 @@ const Preview = () => {
 
         {/* Right Column */}
         <div className="flex ml-2 lg:ml-14 flex-col h-full justify-start">
-          <h2 ref={titleRef} className="text-5xl lg:text-7xl mozilla-headline font-bold mb-1">
+          <h2
+            ref={titleRef}
+            className="text-5xl lg:text-7xl mozilla-headline font-bold mb-1"
+          >
             Dashboard
           </h2>
           <div ref={underlineRef} className="w-full h-[2px] bg-black mb-6" />
@@ -154,10 +222,16 @@ const Preview = () => {
               <div
                 key={i}
                 ref={(el) => (cardRefs.current[i] = el)}
-                className={`group p-4 transition-all duration-300 transform hover:scale-105 border-gray-300 ${i % 2 !== 0 ? 'border-l' : ''} ${i > 1 ? 'border-t' : ''}`}
+                className={`group p-4 transition-all duration-300 transform hover:scale-105 border-gray-300 ${
+                  i % 2 !== 0 ? "border-l" : ""
+                } ${i > 1 ? "border-t" : ""}`}
               >
-                <h3 className="text-xl font-bold mb-2 group-hover:text-black transition-colors">{card.title}</h3>
-                <p className="text-sm font-medium text-gray-600 mb-3 group-hover:text-gray-700 transition-colors">{card.summary}</p>
+                <h3 className="text-xl font-bold mb-2 group-hover:text-black transition-colors">
+                  {card.title}
+                </h3>
+                <p className="text-sm font-medium text-gray-600 mb-3 group-hover:text-gray-700 transition-colors">
+                  {card.summary}
+                </p>
                 <p className="text-gray-500 text-sm">{card.description}</p>
               </div>
             ))}

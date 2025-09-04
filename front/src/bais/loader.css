@@ -1,0 +1,15 @@
+/* Add this to your main CSS file */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-bg {
+  background: linear-gradient(to right, #333 8%, #444 18%, #333 33%);
+  background-size: 200% 100%; /* Adjust size for the gradient to cover more area */
+  animation: shimmer 1.5s infinite linear; /* linear for smooth continuous animation */
+}
