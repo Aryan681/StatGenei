@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import LeftArc from "./HalfCircle";
-import "./css/preview.css";
+import "./css/Preview.css";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
