@@ -10,7 +10,7 @@ import KpiCards from "../compo/dashboard/Kpicard";
 import Charts from "../compo/dashboard/Charts";
 import DataStory from "../compo/dashboard/DataStory";
 import DataSummary from "../compo/dashboard/DataSummary";
-import Sidebar from "../bais/Siderbar.jsx"; 
+import Sidebar from "/src/bais/Siderbar.jsx";
 import { FaDownload } from "react-icons/fa";
 import { HiOutlineAdjustmentsHorizontal, HiOutlineArrowUpTray } from "react-icons/hi2";
 import Toast from "../compo/dashboard/Toaster";
