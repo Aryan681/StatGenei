@@ -55,7 +55,7 @@ const Navbar = ({ homeRef, featuresRef, footerRef }) => {
 
   const handleScroll = (ref) => {
     if (ref && ref.current) {
-      ref.current.scrollIntoView({ behavior: 'smooth' });
+      ref.current.scrollIntoView({ behavior: "smooth" });
       setIsMenuOpen(false);
     }
   };
@@ -112,13 +112,17 @@ const Navbar = ({ homeRef, featuresRef, footerRef }) => {
           <button
             onClick={() => handleScroll(homeRef)}
             className={`relative px-3 py-2 font-medium transition duration-300 ease-in-out focus:outline-none group ${
-              isScrolled ? "text-white hover:text-purple-600" : "text-black hover:text-blue-600"
+              isScrolled
+                ? "text-white hover:text-purple-600"
+                : "text-black hover:text-blue-600"
             }`}
           >
             Home
             <span
               className={`absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-yellow-400 to-orange-400 transition-all duration-500 group-hover:w-full ${
-                isScrolled ? "" : "group-hover:shadow-lg group-hover:shadow-yellow-400/30"
+                isScrolled
+                  ? ""
+                  : "group-hover:shadow-lg group-hover:shadow-yellow-400/30"
               }`}
             ></span>
           </button>
@@ -126,13 +130,17 @@ const Navbar = ({ homeRef, featuresRef, footerRef }) => {
           <button
             onClick={() => handleScroll(featuresRef)}
             className={`relative px-3 py-2 font-medium transition duration-300 ease-in-out focus:outline-none group ${
-              isScrolled ? "text-white hover:text-purple-600" : "text-black hover:text-blue-600"
+              isScrolled
+                ? "text-white hover:text-purple-600"
+                : "text-black hover:text-blue-600"
             }`}
           >
             Features
             <span
               className={`absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-yellow-400 to-orange-400 transition-all duration-500 group-hover:w-full ${
-                isScrolled ? "" : "group-hover:shadow-lg group-hover:shadow-yellow-400/30"
+                isScrolled
+                  ? ""
+                  : "group-hover:shadow-lg group-hover:shadow-yellow-400/30"
               }`}
             ></span>
           </button>
@@ -140,17 +148,21 @@ const Navbar = ({ homeRef, featuresRef, footerRef }) => {
           <button
             onClick={() => handleScroll(footerRef)}
             className={`relative px-3 py-2 font-medium transition duration-300 ease-in-out focus:outline-none group ${
-              isScrolled ? "text-white hover:text-purple-600" : "text-black hover:text-blue-600"
+              isScrolled
+                ? "text-white hover:text-purple-600"
+                : "text-black hover:text-blue-600"
             }`}
           >
             Contact
             <span
               className={`absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-yellow-400 to-orange-400 transition-all duration-500 group-hover:w-full ${
-                isScrolled ? "" : "group-hover:shadow-lg group-hover:shadow-yellow-400/30"
+                isScrolled
+                  ? ""
+                  : "group-hover:shadow-lg group-hover:shadow-yellow-400/30"
               }`}
             ></span>
           </button>
-          
+
           {user ? (
             <div
               className="relative"
@@ -159,7 +171,9 @@ const Navbar = ({ homeRef, featuresRef, footerRef }) => {
             >
               <div
                 className={`flex text-2xl items-center space-x-2 transition-colors duration-200 font-medium cursor-pointer ${
-                  isScrolled ? "text-white hover:text-purple-600" : "text-black hover:text-purple-600"
+                  isScrolled
+                    ? "text-white hover:text-purple-600"
+                    : "text-black hover:text-purple-600"
                 }`}
               >
                 <FaUserCircle className="h-6 w-6" />
@@ -186,7 +200,9 @@ const Navbar = ({ homeRef, featuresRef, footerRef }) => {
               <Link
                 to="/login"
                 className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-                  isScrolled ? "text-purple-600 hover:bg-purple-50 border border-purple-200" : "text-purple-600 hover:bg-purple-700/30 border border-purple-400"
+                  isScrolled
+                    ? "text-purple-600 hover:bg-purple-50 border border-purple-200"
+                    : "text-purple-600 hover:bg-purple-700/30 border border-purple-400"
                 }`}
               >
                 Login
@@ -194,7 +210,9 @@ const Navbar = ({ homeRef, featuresRef, footerRef }) => {
               <Link
                 to="/register"
                 className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-                  isScrolled ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:shadow-lg" : "bg-gradient-to-r from-purple-600 to-indigo-600 text-black hover:shadow-lg hover:shadow-yellow-400/30"
+                  isScrolled
+                    ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:shadow-lg"
+                    : "bg-gradient-to-r from-purple-600 to-indigo-600 text-black hover:shadow-lg hover:shadow-yellow-400/30"
                 }`}
               >
                 Sign Up
@@ -240,7 +258,9 @@ const Navbar = ({ homeRef, featuresRef, footerRef }) => {
         {isMenuOpen && (
           <div
             className={`md:hidden absolute top-full left-0 w-full backdrop-blur-md border-t rounded-b-xl px-4 py-4 ${
-              isScrolled ? "bg-white/95 border-gray-100/30" : "bg-slate-50/90 border-slate-300/30"
+              isScrolled
+                ? "bg-white/95 border-gray-100/30"
+                : "bg-slate-50/90 border-slate-300/30"
             }`}
           >
             <ul className="flex flex-col space-y-3 text-black">

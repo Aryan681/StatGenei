@@ -166,7 +166,8 @@ const Hero = forwardRef((props, ref) => {
       <div className="text-center font-gyrotrope mt-30 lg:mt-40 z-10 max-w-7xl">
         <h1
           ref={heading1Ref}
-          className="text-4xl md:text-7xl font-bold mb-6 text-white"
+          className="text-4xl md:text-6xl font-bold mb-6 text-white"
+          // className="text-4xl md:text-7xl font-bold mb-6 text-white"
         >
           Transform
           <span ref={heading2Ref} className="md:ml-2 text-[#7917e5]">
@@ -175,7 +176,8 @@ const Hero = forwardRef((props, ref) => {
         </h1>
         <h2
           ref={heading3Ref}
-          className="text-2xl md:text-7xl font-bold mb-6 text-white"
+          className="text-2xl md:text-6xl font-bold mb-6 text-white"
+          // className="text-2xl md:text-7xl font-bold mb-6 text-white"
         >
           Into Actionable Insights
         </h2>
