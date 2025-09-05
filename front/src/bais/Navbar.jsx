@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../compo/auth/context";
 import { gsap } from "gsap";
-import { FaUserCircle } from "react-icons/fa"; // Imported for a better user icon
+import { FaUserCircle } from "react-icons/fa";
 
 const Navbar = ({ homeRef, featuresRef, footerRef }) => {
   const { user, logout } = useAuth();
@@ -16,15 +16,15 @@ const Navbar = ({ homeRef, featuresRef, footerRef }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 50); // This is fine, as it's a fixed scroll point
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
     if (navbarRef.current) {
+      // Adjusted GSAP values for smoother, more consistent animation
       gsap.fromTo(
         navbarRef.current,
         { y: -200, opacity: 0 },
@@ -52,12 +52,11 @@ const Navbar = ({ homeRef, featuresRef, footerRef }) => {
       setShowDropdown(false);
     }, 150);
   };
-  
-  // New handleScroll function to be called by buttons
+
   const handleScroll = (ref) => {
     if (ref && ref.current) {
       ref.current.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false); // Close mobile menu after clicking
+      setIsMenuOpen(false);
     }
   };
 
@@ -163,7 +162,7 @@ const Navbar = ({ homeRef, featuresRef, footerRef }) => {
                   isScrolled ? "text-white hover:text-purple-600" : "text-black hover:text-purple-600"
                 }`}
               >
-                <FaUserCircle className="h-6 w-6" /> {/* Replaced user.name with a generic icon */}
+                <FaUserCircle className="h-6 w-6" />
                 <svg
                   className={`w-4 h-4 transition-transform duration-200 ${
                     showDropdown ? "rotate-180" : ""
@@ -209,13 +208,13 @@ const Navbar = ({ homeRef, featuresRef, footerRef }) => {
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className={`transition-colors duration-200 ${
-              isScrolled ? "text-white" : "text-black" // Ensure the mobile menu button color changes
+              isScrolled ? "text-white" : "text-black"
             }`}
           >
             <svg
               className="h-6 w-6"
               fill="none"
-              stroke="currentColor" // Use currentColor to inherit color
+              stroke="currentColor"
               viewBox="0 0 24 24"
             >
               {isMenuOpen ? (
@@ -241,7 +240,7 @@ const Navbar = ({ homeRef, featuresRef, footerRef }) => {
         {isMenuOpen && (
           <div
             className={`md:hidden absolute top-full left-0 w-full backdrop-blur-md border-t rounded-b-xl px-4 py-4 ${
-              isScrolled ? "bg-white/95 border-gray-100/30" : "bg-slate-50/90 border-slate-300/30" // Changed colors for better contrast
+              isScrolled ? "bg-white/95 border-gray-100/30" : "bg-slate-50/90 border-slate-300/30"
             }`}
           >
             <ul className="flex flex-col space-y-3 text-black">
