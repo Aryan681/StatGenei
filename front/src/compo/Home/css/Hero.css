@@ -46,5 +46,5 @@
 }
 @font-face {
   font-family: 'Gyrotrope-Regular';
-  src: url('./Gyrotrope-Regular.otf') format('opentype');
+  src: url('../../../assets/Gyrotrope-Regular.otf') format('opentype');
 }
