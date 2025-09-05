@@ -161,7 +161,7 @@ const Preview = () => {
       id="dashboard"
       className="min-h-screen flex flex-col justify-center px-8 py-10 text-black"
     >
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl ml-50 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Left Column */}
         <LeftArc />
         <div
