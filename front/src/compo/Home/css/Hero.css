@@ -1,4 +1,4 @@
-/* src/TerminalFrame.css */
+
 
 .mac-terminal-frame {
   position: relative;
@@ -41,3 +41,10 @@
   padding: 0px; /* Adjust padding if necessary for the content */
 }
 
+.font-gyrotrope {
+  font-family: 'Gyrotrope-Regular', sans-serif;
+}
+@font-face {
+  font-family: 'Gyrotrope-Regular';
+  src: url('./Gyrotrope-Regular.otf') format('opentype');
+}

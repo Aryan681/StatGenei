@@ -15,14 +15,8 @@ body {
 body::-webkit-scrollbar {
   display: none;
 }
-@font-face {
-  font-family: 'Gyrotrope-Regular';
-  src: url('./Gyrotrope-Regular.otf') format('opentype');
-}
 
-.font-gyrotrope {
-  font-family: 'Gyrotrope-Regular', sans-serif;
-}
+
 
 @keyframes bounce-slow {
   0%, 100% { transform: translateY(0); }
