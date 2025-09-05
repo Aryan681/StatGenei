@@ -111,6 +111,7 @@ const HowItWorks = () => {
       stepsData.forEach((item, index) => {
         const stepEl = stepRefs.current[index];
         const videoEl = videoRefs.current[index];
+        const videoPlayer = videoEl?.querySelector("video");
 
         if (stepEl && videoEl) {
           // Animate step text
@@ -146,26 +147,30 @@ const HowItWorks = () => {
               },
             }
           );
+
+          // Video playback on scroll for all devices
+          if (videoPlayer) {
+            ScrollTrigger.create({
+              trigger: videoEl,
+              start: "top center",
+              onEnter: () => videoPlayer.play(),
+              onLeave: () => {
+                videoPlayer.pause();
+                videoPlayer.currentTime = 0; // Reset video to the beginning
+              },
+              onEnterBack: () => videoPlayer.play(),
+              onLeaveBack: () => {
+                videoPlayer.pause();
+                videoPlayer.currentTime = 0; // Reset video to the beginning
+              },
+            });
+          }
         }
       });
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
-
-  // New function to handle video playback on hover
-  const handleVideoHover = (videoElement) => {
-    if (videoElement) {
-      videoElement.play();
-    }
-  };
-
-  const handleVideoLeave = (videoElement) => {
-    if (videoElement) {
-      videoElement.pause();
-      videoElement.currentTime = 0; // Reset to the beginning
-    }
-  };
 
   return (
     <section
@@ -200,8 +205,6 @@ const HowItWorks = () => {
               <div
                 ref={(el) => (videoRefs.current[index] = el)}
                 className="flex-1 rounded-xl overflow-hidden border border-white border-opacity-10 shadow-lg"
-                onMouseEnter={() => handleVideoHover(videoRefs.current[index].querySelector("video"))}
-                onMouseLeave={() => handleVideoLeave(videoRefs.current[index].querySelector("video"))}
               >
                 <video
                   src={item.videoSrc}
