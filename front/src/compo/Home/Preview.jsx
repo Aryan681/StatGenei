@@ -161,12 +161,12 @@ const Preview = () => {
       id="dashboard"
       className="min-h-screen flex flex-col justify-center px-8 py-10 text-black"
     >
-      <div className="max-w-7xl mx-auto lg:ml-50 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl  lg:ml-30 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Left Column */}
         <LeftArc />
         <div
           ref={laptopRef}
-          className="relative lg:left-[-10rem] w-full aspect-video"
+          className="relative lg:left-[-4rem] w-full aspect-video"
         >
           <img
             src="./pngwing.com.png"
@@ -209,7 +209,7 @@ const Preview = () => {
         </div>
 
         {/* Right Column */}
-        <div className="flex ml-2 lg:ml-14 flex-col h-full justify-start">
+        <div className="flex mr-2 lg:mr-4 flex-col h-full justify-start">
           <h2
             ref={titleRef}
             className="text-5xl lg:text-7xl mozilla-headline font-bold mb-1"

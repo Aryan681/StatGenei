@@ -181,6 +181,9 @@ const Hero = forwardRef((props, ref) => {
         >
           Into Actionable Insights
         </h2>
+        <h3 className="text-sm md:text-xl font-bold mb-6 opacity-70 text-white">
+          Stop wasting 30–45 minutes analyzing Excel/CSV data. StatGenie makes it simple—no SQL, no complex BI tools, just instant answers.
+        </h3>
         <button
           onClick={handleTryFreeTrial}
           className="bg-white text-black text-sm md:text-xl mr-3 font-semibold px-4 py-2 md:px-8 md:py-4 rounded-full hover:bg-gray-200 transition-all transform hover:scale-105"
@@ -190,6 +193,7 @@ const Hero = forwardRef((props, ref) => {
         <button className="bg-white text-black ml-4 md:ml-10 text-sm md:text-xl font-semibold px-4 py-2 md:px-8 md:py-4 rounded-full hover:bg-gray-200 transition-all transform hover:scale-105">
           Scroll to Explore
         </button>
+        
       </div>
 
       <div

@@ -175,7 +175,7 @@ const HowItWorks = () => {
   return (
     <section
       ref={sectionRef}
-      className="h-full text-black flex flex-col justify-center mb-13 ml-2"
+      className="h-full text-black flex flex-col justify-center  mb-13 "
     >
       <div className="max-w-6xl mx-auto">
         <h2
@@ -184,7 +184,7 @@ const HowItWorks = () => {
         >
           How It Works!
         </h2>
-        <div className="grid gap-16">
+        <div className="grid gap-16 p-5 ">
           {stepsData.map((item, index) => (
             <div
               key={index}
