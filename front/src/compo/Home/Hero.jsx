@@ -80,35 +80,14 @@ const Hero = forwardRef((props, ref) => {
             ease: "power2.out",
             scrollTrigger: {
               trigger: imageRef.current,
-              start: isDesktop ? "top 80%" : "top-=30 45%",
+              start: isDesktop ? "top 80%" : "top-=230 45%",
               end: isDesktop ? "top center-=30" : "top+=80 center-=30",
               toggleActions: "play reverse play reverse",
+              // markers:true
             },
           }
         );
       }
-
-      const arrowAnimationOffset = 50;
-      const arrowsTimeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: heading1Ref.current,
-          start: "top 70%",
-          toggleActions: "play reverse play reverse",
-        },
-      });
-
-      arrowsTimeline.fromTo(
-        svgRefs.current[0],
-        { x: arrowAnimationOffset, opacity: 0 },
-        { x: 0, opacity: 1, duration: 1.5, ease: "power3.out" },
-        0
-      );
-      arrowsTimeline.fromTo(
-        svgRefs.current[1],
-        { x: -arrowAnimationOffset, opacity: 0 },
-        { x: 0, opacity: 1, duration: 1.5, ease: "power3.out" },
-        "<"
-      );
 
       gsap.to(svgRefs.current.slice(0, 2), {
         y: -10,
@@ -131,6 +110,7 @@ const Hero = forwardRef((props, ref) => {
               trigger: heading1Ref.current,
               start: "top 70%",
               toggleActions: "play reverse play reverse",
+              
             },
           }
         );
@@ -176,23 +156,23 @@ const Hero = forwardRef((props, ref) => {
         </h1>
         <h2
           ref={heading3Ref}
-          className="text-2xl md:text-6xl font-bold mb-6 text-white"
+          className="text-xl md:text-6xl font-bold mb-2 text-white"
           // className="text-2xl md:text-7xl font-bold mb-6 text-white"
         >
           Into Actionable Insights
         </h2>
-        <h3 className="text-sm md:text-xl font-bold mb-6 opacity-70 text-white">
+        <h3 className="lg:text-lg text-xs md:text-xl font-mb-6 opacity-70 text-white">
           Stop wasting 30–45 minutes analyzing Excel/CSV data. StatGenie makes it simple—no SQL, no complex BI tools, just instant answers.
         </h3>
-        <button
+       <div className=":  text-xs "> <button
           onClick={handleTryFreeTrial}
-          className="bg-white text-black text-sm md:text-xl mr-3 font-semibold px-4 py-2 md:px-8 md:py-4 rounded-full hover:bg-gray-200 transition-all transform hover:scale-105"
+          className="bg-white text-black md:text-xl  m-3  font-semibold px-4 py-2 md:px-8 md:py-4 rounded-full hover:bg-gray-200 transition-all transform hover:scale-105"
         >
           Try Free trial
         </button>
-        <button className="bg-white text-black ml-4 md:ml-10 text-sm md:text-xl font-semibold px-4 py-2 md:px-8 md:py-4 rounded-full hover:bg-gray-200 transition-all transform hover:scale-105">
+        <button className="bg-white  text-black ml-4 md:ml-10  md:text-xl font-semibold px-4 py-2 md:px-8 md:py-4 rounded-full hover:bg-gray-200 transition-all transform hover:scale-105">
           Scroll to Explore
-        </button>
+        </button></div>
         
       </div>
 
